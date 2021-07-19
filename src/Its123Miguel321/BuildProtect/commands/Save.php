@@ -36,11 +36,6 @@ class Save extends Command{
 			return;
 		}
 		
-		if(!$sender->isOp()){
-			$sender->sendMessage("§l§c(!) §r§7You must be opped to use this command!");
-			return;
-		}
-		
 		if(!($this->plugin->hasSelections($sender->getName(), "pos1") && $this->plugin->hasSelections($sender->getName(), "pos2"))){
 			$sender->sendMessage("§l§c(!) §r§7You must have 2 positions selected!");
 			return;

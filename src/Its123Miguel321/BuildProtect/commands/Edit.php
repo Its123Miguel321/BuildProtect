@@ -35,7 +35,7 @@ class Edit extends Command{
 			return;
 		}
 		
-		$builds = $this->plugin->config->get("builds", []);
+		$builds = $this->plugin->builds->get("builds", []);
 		$names = [];
 		
 		foreach(array_values($builds) as $build){

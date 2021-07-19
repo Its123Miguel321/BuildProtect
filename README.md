@@ -1,7 +1,7 @@
 # BuildProtect
 
 ## General
-Protect your builds with this plugin
+BuildProtect is a plugin made to protect your builds or any area. It uses wands to select positions for your areas.
 
 ## Commands
 Commands|Aliases|Permissions|Description|

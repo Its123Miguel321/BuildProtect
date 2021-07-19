@@ -1,9 +1,9 @@
 <?php
 
-namespace ReformedDevs\ReformedNetwork_Core\BuildProtect\commands;
+namespace Its123Miguel321\BuildProtect\commands;
 
-use ReformedDevs\ReformedNetwork_Core\BuildProtect\BuildProtect;
-use ReformedDevs\ReformedNetwork_Core\BuildProtect\EventListener;
+use Its123Miguel321\BuildProtect\BuildProtect;
+use Its123Miguel321\BuildProtect\EventListener;
 use jojoe77777\FormAPI\CustomForm;
 
 use pocketmine\command\Command;

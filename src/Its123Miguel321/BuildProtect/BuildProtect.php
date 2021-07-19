@@ -60,7 +60,7 @@ class BuildProtect extends PluginBase implements Listener{
 		$builds = $this->builds->get("builds", []);
 		if($this->bpExists($build)){
 			unset($builds[$build]);
-			$this->builds->set("count", $this->builds->get("count) - 1);
+			$this->builds->set("count", $this->builds->get("count") - 1);
 			$this->builds->set("builds", $builds);
 			$this->builds->save();
 			return true;

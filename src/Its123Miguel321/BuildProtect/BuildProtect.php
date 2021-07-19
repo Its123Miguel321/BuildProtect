@@ -19,9 +19,13 @@ class BuildProtect extends PluginBase implements Listener{
 	
 	public $config;
 	
+	public $builds;
+	
     	public function onEnable(){
-        
-		$this->config = new Config($this->getDataFolder() . "builds.yml", Config::YAML, ["count" => 0, "builds" => []]);
+        	
+		$this->config = $this->getConfig();
+		
+		$this->builds = new Config($this->getDataFolder() . "builds.yml", Config::YAML, ["count" => 0, "builds" => []]);
 
 		// Registers EventListener
 		$plugin->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
@@ -36,43 +40,44 @@ class BuildProtect extends PluginBase implements Listener{
 	}
     	
 	public function bpExists(string $build){
-		$config = $this->config->get("builds", []);
-		return isset($config[$build]);
+		$builds = $this->builds->get("builds", []);
+		return isset($builds[$build]);
 	}
 	
 	public function createBP(string $build, array $pos1, array $pos2, bool $break = true, bool $place = true, bool $pvp = true, bool $fly = true){
-		$config = $this->config->get("builds", []);
+		$builds = $this->builds->get("builds", []);
 		if(!$this->bpExists($build)){
-			$config[$build] = ["name" => $build, "pos1" => $pos1, "pos2" => $pos2, "PvP" => $pvp, "BlockPlacing" => $place, "BlockBreaking" => $break, "Flight" => $fly];
-			$this->config->set("builds", $config);
-			$this->config->set("count", $this->config->get("count") + 1);
-			$this->config->save();
+			$builds[$build] = ["name" => $build, "pos1" => $pos1, "pos2" => $pos2, "PvP" => $pvp, "BlockPlacing" => $place, "BlockBreaking" => $break, "Flight" => $fly];
+			$this->builds->set("builds", $builds);
+			$this->builds->set("count", $this->builds->get("count") + 1);
+			$this->builds->save();
 			return true;
 		}
 		return false;
 	}
 	
 	public function deleteBP(string $build){
-		$config = $this->config->get("builds", []);
+		$builds = $this->builds->get("builds", []);
 		if($this->bpExists($build)){
-			unset($config[$build]);
-			$this->config->set("builds", $config);
-			$this->config->save();
+			unset($builds[$build]);
+			$this->builds->set("count", $this->builds->get("count) - 1);
+			$this->builds->set("builds", $builds);
+			$this->builds->save();
 			return true;
 		}
 		return false;
 	}
 	
 	public function getBP(string $build){
-		$config = $this->config->get("builds", []);
+		$builds = $this->builds->get("builds", []);
 		if($this->bpExists($build)){
-			return $config[$build];
+			return $builds[$build];
 		}
 		return false;
 	}
 	
 	public function isInside(Vector3 $pos){
-		foreach($this->config->get("builds", []) as $build){
+		foreach($this->builds->get("builds", []) as $build){
 			$x = array_flip(range($build["pos1"]["x"], $build["pos2"]["x"]));
 			$y = array_flip(range($build["pos1"]["y"], $build["pos2"]["y"]));
 			$z = array_flip(range($build["pos1"]["z"], $build["pos2"]["z"]));

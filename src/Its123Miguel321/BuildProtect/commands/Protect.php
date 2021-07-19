@@ -19,7 +19,7 @@ class Protect extends Command{
 		
 		$this->plugin = $plugin;
 		parent::__construct("buildprotect");
-		$this->setDescription("get the build protect wand(feather)!");
+		$this->setDescription("get the build protect wand!");
 		$this->setUsage("/buildprotect");
 		$this->setPermission("build.protect.wand");
 		$this->setAliases(["bp"]);
@@ -42,7 +42,7 @@ class Protect extends Command{
 			return;
 		}
 		
-		$item = Item::get(Item::FEATHER);
+		$item = Item::get($this->plugin->config->get("item"));
 		$item->addEnchantment(new EnchantmentInstance(Enchantment::getEnchantment(100), 1));
 		$item->setCustomName("§l§6Protection §fFeather");
 		$item->setLore(["§fRight Click §6to select first position\n\n§fLeft Click §6to select second position"]);

@@ -140,7 +140,7 @@ class EventListener implements Listener{
 		$block = $event->getBlock();
 		$item = $event->getItem();
 		
-		if($item->getId() !== 288 && $item->getName() !== "§l§6Protection §fFeather"){
+		if($item->getId() !== $this->plugin->config->get("ItemID") && $item->getName() !== "§l§6Protection §fFeather"){
 			return;
 		}
 		

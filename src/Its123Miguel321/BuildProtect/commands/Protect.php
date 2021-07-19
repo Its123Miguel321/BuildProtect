@@ -1,8 +1,8 @@
 <?php
 
-namespace ReformedDevs\ReformedNetwork_Core\BuildProtect\commands;
+namespace Its123Miguel321\BuildProtect\commands;
 
-use ReformedDevs\ReformedNetwork_Core\BuildProtect\BuildProtect;
+use Its123Miguel321\BuildProtect\BuildProtect;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;

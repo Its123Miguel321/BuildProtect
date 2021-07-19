@@ -38,9 +38,9 @@ class Edit extends Command{
 		$builds = $this->plugin->config->get("builds", []);
 		$names = [];
 		
-        foreach(array_values($builds) as $build){
-            array_push($names, $build["name"]);
-        }
+		foreach(array_values($builds) as $build){
+		    array_push($names, $build["name"]);
+		}
 		
 		if(count($names) == 0){
 		    $sender->sendMessage("§l§c(!) §r§7There are no protected areas!");

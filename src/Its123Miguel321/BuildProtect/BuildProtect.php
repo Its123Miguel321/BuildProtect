@@ -28,15 +28,15 @@ class BuildProtect extends PluginBase implements Listener{
 		$this->builds = new Config($this->getDataFolder() . "builds.yml", Config::YAML, ["count" => 0, "builds" => []]);
 
 		// Registers EventListener
-		$plugin->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
+		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 
 		// Registers all commands
-		$plugin->getServer()->getCommandMap()->registerAll("BuildProtect", [new Protect($this), new Save($this), new Delete($this), new Edit($this)]);
+		$this->getServer()->getCommandMap()->registerAll("BuildProtect", [new Protect($this), new Save($this), new Delete($this), new Edit($this)]);
 
 		// Registers the BuildProtect enchantment
 		Enchantment::RegisterEnchantment(new Enchantment(100, "BuildProtect", Enchantment::RARITY_COMMON, 0, 0, 1));
 
-		$plugin->saveResource("builds.yml");
+		$this->saveResource("builds.yml");
 	}
     	
 	public function bpExists(string $build){

@@ -1,12 +1,12 @@
 <?php
 
-namespace ReformedDevs\ReformedNetwork_Core\BuildProtect;
+namespace Its123Miguel321\BuildProtect;
 
 use Its123Miguel321\BuildProtect\commands\Save;
 use Its123Miguel321\BuildProtect\commands\Delete;
 use Its123Miguel321\BuildProtect\commands\Edit;
 use Its123Miguel321\BuildProtect\commands\Protect;
-use Its123Miguel321\BuildProtectEventListener;
+use Its123Miguel321\BuildProtect\EventListener;
 
 use pocketmine\item\enchantment\Enchantment;
 use pocketmine\item\enchantment\EnchantmentInstance;

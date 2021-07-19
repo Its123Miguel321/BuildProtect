@@ -36,18 +36,12 @@ class Delete extends Command{
 			return;
 		}
 		
-		if(!$sender->isOp()){
-			$sender->sendMessage("§l§c(!) §r§7You must be opped to use this command!");
-			return;
-		}
-		
-		
 		$builds = $this->plugin->config->get("builds", []);
 		$names = [];
 		
-        foreach(array_values($builds) as $build){
-            array_push($names, $build["name"]);
-        }
+        	foreach(array_values($builds) as $build){
+            		array_push($names, $build["name"]);
+        	}
 		
 		if(count($names) == 0){
 		    $sender->sendMessage("§l§c(!) §r§7There are no protected areas!");

@@ -37,11 +37,6 @@ class Protect extends Command{
 			return;
 		}
 		
-		if(!$sender->isOp()){
-			$sender->sendMessage("§l§c(!) §r§7You must be opped to use this command!");
-			return;
-		}
-		
 		$item = Item::get($this->plugin->config->get("ItemID"));
 		$item->addEnchantment(new EnchantmentInstance(Enchantment::getEnchantment(100), 1));
 		$item->setCustomName($this->plugin->config->get("WandName"));

@@ -50,7 +50,7 @@ class EventListener implements Listener{
 	        return;
 	    }
 	    
-	    foreach($this->plugin->config->get("builds", []) as $areas){
+	    foreach($this->plugin->builds->get("builds", []) as $areas){
 	        if($areas["PvP"] == false){
 	            $event->setCancelled();
 	        }
@@ -75,7 +75,7 @@ class EventListener implements Listener{
 	        return;
 	    }
 	    
-	    foreach($this->plugin->config->get("builds", []) as $areas){
+	    foreach($this->plugin->builds->get("builds", []) as $areas){
 	        if($areas["BlockBreaking"] == false){
 	            $event->setCancelled();
 	        }
@@ -99,7 +99,7 @@ class EventListener implements Listener{
 	        return;
 	    }
 	    
-	    foreach($this->plugin->config->get("builds", []) as $areas){
+	    foreach($this->plugin->builds->get("builds", []) as $areas){
 	        if($areas["BlockPlacing"] == false){
 	            $event->setCancelled();
 	        }
@@ -122,7 +122,7 @@ class EventListener implements Listener{
 	        return;
 	    }
 	    
-	    foreach($this->plugin->config->get("builds", []) as $areas){
+	    foreach($this->plugin->builds->get("builds", []) as $areas){
 	        if($areas["Flight"] == false){
 	            if($player->isFlying()){
 	                $player->sendMessage("§l§c(!) §r§7You entered a no fly zone, you have been taken out of flight mode!");
@@ -140,7 +140,7 @@ class EventListener implements Listener{
 		$block = $event->getBlock();
 		$item = $event->getItem();
 		
-		if($item->getId() !== $this->plugin->config->get("ItemID") && $item->getName() !== "§l§6Protection §fFeather"){
+		if($item->getId() . ":" . $item->getDamage() !== $this->plugin->config->get("ItemID") && $item->getName() !== $this->plugin->config->get("WandName")){
 			return;
 		}
 		
@@ -172,7 +172,7 @@ class EventListener implements Listener{
 		$block = $event->getBlock();
 		$item = $event->getItem();
 		
-		if($item->getId() !== 288 && $item->getName() !== "§l§6Protection §fFeather"){
+		if($item->getId() . ":" . $item->getDamage() !== $this->plugin->config->get("ItemID") && $item->getName() !== $this->plugin->config->get("WandName")){
 			return;
 		}
 		

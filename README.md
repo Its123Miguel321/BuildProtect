@@ -24,4 +24,4 @@ Commands|Aliases|Permissions|Description|
 
 ## Help
 - Break a block with the wand to select the first position
-- Tap/click a block with the wand to select the second position
+- Interact a block with the wand to select the second position

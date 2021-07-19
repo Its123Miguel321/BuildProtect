@@ -1,8 +1,8 @@
 <?php
 
-namespace ReformedDevs\ReformedNetwork_Core\BuildProtect;
+namespace Its123Miguel321\BuildProtect;
 
-use ReformedDevs\ReformedNetwork_Core\BuildProtect\BuildProtect;
+use Its123Miguel321\BuildProtect\BuildProtect;
 
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\BlockPlaceEvent;
@@ -150,6 +150,12 @@ class EventListener implements Listener{
 		
 		$event->setCancelled();
 		
+		if(isset($this->wandClicks[$player->getName()]) && microtime(true) - $this->wandClicks[$player->getName()] < 0.5) {
+            		return;
+        	}
+        
+        	$this->wandClicks[$player->getName()] = microtime(true);
+		
 		$x = $block->getX();
 		$y = $block->getY();
 		$z = $block->getZ();
@@ -181,10 +187,10 @@ class EventListener implements Listener{
 		}
 		
 		if(isset($this->wandClicks[$player->getName()]) && microtime(true) - $this->wandClicks[$player->getName()] < 0.5) {
-            return;
-        }
+            		return;
+        	}
         
-        $this->wandClicks[$player->getName()] = microtime(true);
+        	$this->wandClicks[$player->getName()] = microtime(true);
 		
 		$x = $block->getX();
 		$y = $block->getY();

@@ -42,10 +42,9 @@ class Protect extends Command{
 			return;
 		}
 		
-		$item = Item::get($this->plugin->config->get("item"));
+		$item = Item::get($this->plugin->config->get("ItemID"));
 		$item->addEnchantment(new EnchantmentInstance(Enchantment::getEnchantment(100), 1));
-		$item->setCustomName("§l§6Protection §fFeather");
-		$item->setLore(["§fRight Click §6to select first position\n\n§fLeft Click §6to select second position"]);
+		$item->setCustomName($this->plugin->config->get("WandName"));
 		
 		if(!$sender->getInventory()->canAddItem($item)){
 			$sender->sendMessage("§l§c(!) §r§7Can not add item to your inventory!");

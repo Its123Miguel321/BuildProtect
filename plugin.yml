@@ -1,0 +1,22 @@
+name: BuildProtect
+main: Its123Miguel321\BuildProtect\BuildProtect
+api: [3.0.0]
+version: 1.0
+author: Its123Miguel321
+
+permissions:
+ build.protect.plugin:
+  default: op
+  children:
+   buildprotect.wand:
+    default: op
+   build.protect.save:
+    default: op
+   build.protect.edit:
+    default: op
+   build.protect.delete:
+    default: op
+   build.protect.bypass:
+    default: op
+   build.protect.admin:
+    default: op

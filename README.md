@@ -6,12 +6,12 @@ BuildProtect is a plugin made to protect your builds or any area. It uses wands 
 ## Commands
 Commands|Aliases|Permissions|Description|
 |-----------|-----------|-----------|-----------|
-|||build.protect.admin|Gives access to all BuildProtect commands|
-|||build.protect.bypass|Bypass the events cancelled in areas|
-|/buildprotect|/bp|build.protect.wand|Access to wand command|
-|/protectsave|/ps|build.protect.save|Access to save command|
-|/protectedit|/pe|build.protect.edit|Access to edit command|
-|/protectdelete|/pd|build.protect.delete|Access to delete command|
+|||buildprotect.admin|Gives access to all BuildProtect commands|
+|||buildprotect.bypass|Bypass the events cancelled in areas|
+|/buildprotect|/bp|buildprotect.wand|Access to wand command|
+|/protectsave|/ps|buildprotect.save|Access to save command|
+|/protectedit|/pe|buildprotect.edit|Access to edit command|
+|/protectdelete|/pd|buildprotect.delete|Access to delete command|
 
 ## Features
 - Create areas

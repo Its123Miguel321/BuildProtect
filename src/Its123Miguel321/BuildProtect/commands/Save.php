@@ -8,9 +8,11 @@ use jojoe77777\FormAPI\CustomForm;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\command\PluginIdentifiableCommand;
 use pocketmine\Player;
+use pocketmine\plugin\Plugin;
 
-class Save extends Command{
+class Save extends Command extends PluginIdentifiableCommand{
 
 	private $plugin;
 	
@@ -26,7 +28,7 @@ class Save extends Command{
 	
 	public function execute(CommandSender $sender, string $commandLabel, array $args){
 		
-		if(!($sender->hasPermission("buildprotect.save") || $sender->hasPermission("build.protect.admin"))){
+		if(!($sender->hasPermission("buildprotect.save") || $sender->hasPermission("buildprotect.admin"))){
 			$sender->sendMessage("§l§c(!) §r§7You do not have permission to run this command!");
 			return;
 		}
@@ -76,5 +78,9 @@ class Save extends Command{
 		$form->addToggle("§6PvP", true);
 		$form->addToggle("§6Flight", true);
 		$sender->sendForm($form);
+	}
+	
+	public function getPlugin() : Plugin{
+		return $this->plugin;
 	}
 }

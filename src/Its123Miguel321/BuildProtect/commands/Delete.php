@@ -8,9 +8,11 @@ use jojoe77777\FormAPI\CustomForm;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\command\PluginIdentifiableCommand;
 use pocketmine\Player;
+use pocketmine\plugin\Plugin;
 
-class Delete extends Command{
+class Delete extends Command implements PluginIdentifiableCommand{
 
 	private $plugin;
 	
@@ -26,7 +28,7 @@ class Delete extends Command{
 	
 	public function execute(CommandSender $sender, string $commandLabel, array $args){
 		
-		if(!($sender->hasPermission("build.protect.delete") || $sender->hasPermission("build.protect.build.protect.admin"))){
+		if(!($sender->hasPermission("buildprotect.delete") || $sender->hasPermission("buildprotect.admin"))){
 			$sender->sendMessage("§l§c(!) §r§7You do not have permission to run this command!");
 			return;
 		}
@@ -73,5 +75,9 @@ class Delete extends Command{
 		$form->addDropDown("§6Select an area:", $names);
 		$form->addToggle("§6Confirmation", false);
 		$sender->sendForm($form);
+	}
+	
+	public function getPlugin() : Plugin{
+		return $this->plugin;
 	}
 }

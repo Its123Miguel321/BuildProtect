@@ -6,12 +6,14 @@ use Its123Miguel321\BuildProtect\BuildProtect;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\command\PluginIdentifiableCommand;
 use pocketmine\item\enchantment\Enchantment;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\item\Item;
 use pocketmine\Player;
+use pocketmine\plugin\Plugin;
 
-class Protect extends Command{
+class Protect extends Command implements PluginIdentifiableCommand{
 
 	private $plugin;
 	
@@ -21,13 +23,13 @@ class Protect extends Command{
 		parent::__construct("buildprotect");
 		$this->setDescription("get the build protect wand!");
 		$this->setUsage("/buildprotect");
-		$this->setPermission("build.protect.wand");
+		$this->setPermission("buildprotect.wand");
 		$this->setAliases(["bp"]);
 	}
 	
 	public function execute(CommandSender $sender, string $commandLabel, array $args){
 		
-		if(!($sender->hasPermission("build.protect.wand") || $sender->hasPermission("build.protect.build.protect.admin"))){
+		if(!($sender->hasPermission("buildprotect.wand") || $sender->hasPermission("buildprotect.admin"))){
 			$sender->sendMessage("§l§c(!) §r§7You do not have permission to run this command!");
 			return;
 		}
@@ -48,5 +50,9 @@ class Protect extends Command{
 		
 		$sender->getInventory()->addItem($item);
 		$sender->sendMessage("§l§a(!) §r§7Added §l§6Protection §fFeather §r§7to your inventory!");
+	}
+	
+	public function getPlugin() : Plugin{
+		return $this->plugin;
 	}
 }

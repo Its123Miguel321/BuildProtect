@@ -12,7 +12,7 @@ use pocketmine\command\PluginIdentifiableCommand;
 use pocketmine\Player;
 use pocketmine\plugin\Plugin;
 
-class Save extends Command extends PluginIdentifiableCommand{
+class Save extends Command implements PluginIdentifiableCommand{
 
 	private $plugin;
 	

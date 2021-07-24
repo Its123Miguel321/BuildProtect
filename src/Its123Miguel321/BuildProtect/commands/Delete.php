@@ -22,7 +22,7 @@ class Delete extends Command implements PluginIdentifiableCommand{
 		parent::__construct("protectdelete");
 		$this->setDescription("delete a protected area");
 		$this->setUsage("/protectdelete");
-		$this->setPermission("build.protect.delete");
+		$this->setPermission("buildprotect.delete");
 		$this->setAliases(["pd"]);
 	}
 	

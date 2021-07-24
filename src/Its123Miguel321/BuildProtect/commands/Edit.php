@@ -8,9 +8,11 @@ use jojoe77777\FormAPI\CustomForm;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\command\PluginIdentifiableCommand;
 use pocketmine\Player;
+use pocketmine\plugin\Plugin;
 
-class Edit extends Command{
+class Edit extends Command implements PluginIdentifiableCommand{
 
     public $plugin;
     
@@ -19,13 +21,13 @@ class Edit extends Command{
         parent::__construct("protectedit");
         $this->setDescription("edit a protect area!");
         $this->setUsage("/protectedit");
-        $this->setPermission("build.protect.edit");
+        $this->setPermission("buildprotect.edit");
         $this->setAliases(["pe"]);
     }
     
     public function execute(CommandSender $sender, string $commandLabel, array $args){
         
-		if(!($sender->hasPermission("build.protect.delete") || $sender->hasPermission("build.protect.build.protect.admin"))){
+		if(!($sender->hasPermission("buildprotect.delete") || $sender->hasPermission("buildprotect.admin"))){
 			$sender->sendMessage("§l§c(!) §r§7You do not have permission to run this command!");
 			return;
 		}
@@ -92,4 +94,8 @@ class Edit extends Command{
 		$form->addToggle("§6New Coords", false);
 		$sender->sendForm($form);
     }
+	
+	public function getPlugin() : Plugin{
+		return $this->plugin;
+	}
 }

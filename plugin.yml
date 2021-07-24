@@ -5,18 +5,18 @@ version: 1.0
 author: Its123Miguel321
 
 permissions:
- build.protect.plugin:
+ buildprotect.plugin:
   default: op
   children:
    buildprotect.wand:
     default: op
-   build.protect.save:
+   buildprotect.save:
     default: op
-   build.protect.edit:
+   buildprotect.edit:
     default: op
-   build.protect.delete:
+   buildprotect.delete:
     default: op
-   build.protect.bypass:
+   buildprotect.bypass:
     default: op
-   build.protect.admin:
+   buildprotect.admin:
     default: op

@@ -54,8 +54,6 @@ class Save extends Command implements PluginIdentifiableCommand{
 				return;
 			}
 			
-			var_dump($data);
-			
 			if($this->plugin->bpExists($data[1])){
 				$player->sendMessage("§l§c(!) §r§7That area name already exists!");
 				return;

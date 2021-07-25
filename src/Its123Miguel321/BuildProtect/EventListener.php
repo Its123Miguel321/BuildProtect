@@ -38,9 +38,9 @@ class EventListener implements Listener{
 	        return;
 	    }
 	    
-        if($attacker->hasPermission("buildprotect.bypass")){
-            return;
-        }
+            if($attacker->hasPermission("buildprotect.bypass")){
+            	return;
+            }
 	    
 	    if(!$this->plugin->isInside(new Vector3($attacker->getX(), $attacker->getY(), $attacker->getZ()))){
 	        return;
@@ -68,8 +68,8 @@ class EventListener implements Listener{
 	    }
 	    
 	    if($player->hasPermission("buildprotect.bypass")){
-            return;
-        }
+                return;
+            }
 	    
 	    if(!$this->plugin->isInside(new Vector3($block->getX(), $block->getY(), $block->getZ()))){
 	        return;
@@ -92,8 +92,8 @@ class EventListener implements Listener{
 	    }
 	    
 	    if($player->hasPermission("buildprotect.bypass")){
-            return;
-        }
+                return;
+            }
 	    
 	    if(!$this->plugin->isInside(new Vector3($block->getX(), $block->getY(), $block->getZ()))){
 	        return;
@@ -114,9 +114,9 @@ class EventListener implements Listener{
 	        return;
 	    }
 	    
-		if($player->hasPermission("buildprotect.bypass")){
+            if($player->hasPermission("buildprotect.bypass")){
             	return;
-        }
+            }
 	    
 	    if(!$this->plugin->isInside(new Vector3($player->getX(), $player->getY(), $player->getZ()))){
 	        return;
@@ -151,10 +151,10 @@ class EventListener implements Listener{
 		$event->setCancelled();
 		
 		if(isset($this->wandClicks[$player->getName()]) && microtime(true) - $this->wandClicks[$player->getName()] < 0.5) {
-            	return;
-        }
+            	        return;
+                }
         
-        $this->wandClicks[$player->getName()] = microtime(true);
+                $this->wandClicks[$player->getName()] = microtime(true);
 		
 		$x = $block->getX();
 		$y = $block->getY();

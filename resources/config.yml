@@ -8,8 +8,8 @@
 
 # ================================================================================
 
-# Add the item ID you would to have as your wand! It has to be formatted as 1:0
-ItemID: 288:0
+# Add the item ID you would to have as your wand! It has to be formatted as "1:0"
+ItemID: "288:0"
 
 # This is for what you would like to name the wand!
 WandName: "§l§6Protection §fFeather"

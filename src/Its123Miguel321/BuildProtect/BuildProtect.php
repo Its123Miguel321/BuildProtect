@@ -9,7 +9,6 @@ use Its123Miguel321\BuildProtect\commands\Protect;
 use Its123Miguel321\BuildProtect\EventListener;
 
 use pocketmine\item\enchantment\Enchantment;
-use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\event\Listener;
 use pocketmine\level\Position;
 use pocketmine\plugin\PluginBase;

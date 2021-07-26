@@ -11,7 +11,7 @@ use Its123Miguel321\BuildProtect\EventListener;
 use pocketmine\item\enchantment\Enchantment;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\event\Listener;
-use pocketmine\math\Vector3;
+use pocketmine\level\Position;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 
@@ -76,7 +76,7 @@ class BuildProtect extends PluginBase implements Listener{
 		return false;
 	}
 	
-	public function isInside(Vector3 $pos){
+	public function isInside(Position $pos){
 		foreach($this->builds->get("builds", []) as $build){
 			$x = array_flip(range($build["pos1"]["x"], $build["pos2"]["x"]));
 			$y = array_flip(range($build["pos1"]["y"], $build["pos2"]["y"]));
@@ -84,7 +84,9 @@ class BuildProtect extends PluginBase implements Listener{
 			if(isset($x[$pos->getX()])){
 				if(isset($y[$pos->getY()])){
 					if(isset($z[$pos->getZ()])){
-						return true;
+					    if($pos->getLevel()->getName() == $build["pos1"]["level"]){
+						    return true;
+					    }
 					}
 				}
 			}

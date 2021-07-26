@@ -10,7 +10,7 @@ use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerMoveEvent;
-use pocketmine\math\Vector3;
+use pocketmine\level\Position;
 use pocketmine\Player;
 
 class EventListener implements Listener{
@@ -38,20 +38,21 @@ class EventListener implements Listener{
 	        return;
 	    }
 	    
-            if($attacker->hasPermission("buildprotect.bypass")){
-            	return;
-            }
+        if($attacker->hasPermission("buildprotect.bypass")){
+            return;
+        }
 	    
-	    if(!$this->plugin->isInside(new Vector3($attacker->getX(), $attacker->getY(), $attacker->getZ()))){
+	    if(!$this->plugin->isInside(new Position($attacker->getX(), $attacker->getY(), $attacker->getZ(), $attacker->getLevel()))){
 	        return;
 	    }
 	    
-	    if(!$this->plugin->isInside(new Vector3($victim->getX(), $victim->getY(), $victim->getZ()))){
+	    if(!$this->plugin->isInside(new Position($victim->getX(), $victim->getY(), $victim->getZ(), $victim->getLevel()))){
 	        return;
 	    }
 	    
 	    foreach($this->plugin->builds->get("builds", []) as $areas){
 	        if($areas["PvP"] == false){
+	            $attacker->sendMessage("§l§c(!) §r§7PvP is disabled in this area!");
 	            $event->setCancelled();
 	        }
 	    }
@@ -68,15 +69,16 @@ class EventListener implements Listener{
 	    }
 	    
 	    if($player->hasPermission("buildprotect.bypass")){
-                return;
-            }
+            return;
+        }
 	    
-	    if(!$this->plugin->isInside(new Vector3($block->getX(), $block->getY(), $block->getZ()))){
+	    if(!$this->plugin->isInside(new Position($block->getX(), $block->getY(), $block->getZ(), $block->getLevel()))){
 	        return;
 	    }
 	    
 	    foreach($this->plugin->builds->get("builds", []) as $areas){
 	        if($areas["BlockBreaking"] == false){
+	            $player->sendMessage("§l§c(!) §r§7You can not break any blocks in this area!");
 	            $event->setCancelled();
 	        }
 	    }
@@ -92,15 +94,16 @@ class EventListener implements Listener{
 	    }
 	    
 	    if($player->hasPermission("buildprotect.bypass")){
-                return;
-            }
+            return;
+        }
 	    
-	    if(!$this->plugin->isInside(new Vector3($block->getX(), $block->getY(), $block->getZ()))){
+	    if(!$this->plugin->isInside(new Position($block->getX(), $block->getY(), $block->getZ(), $block->getLevel()))){
 	        return;
 	    }
 	    
 	    foreach($this->plugin->builds->get("builds", []) as $areas){
 	        if($areas["BlockPlacing"] == false){
+	            $player->sendMessage("§l§c(!) §r§7You can not place any blocks in this area!");
 	            $event->setCancelled();
 	        }
 	    }
@@ -114,11 +117,11 @@ class EventListener implements Listener{
 	        return;
 	    }
 	    
-            if($player->hasPermission("buildprotect.bypass")){
-            	return;
-            }
+        if($player->hasPermission("buildprotect.bypass")){
+            return;
+        }
 	    
-	    if(!$this->plugin->isInside(new Vector3($player->getX(), $player->getY(), $player->getZ()))){
+	    if(!$this->plugin->isInside(new Position($player->getX(), $player->getY(), $player->getZ(), $player->getLevel()))){
 	        return;
 	    }
 	    
@@ -151,10 +154,10 @@ class EventListener implements Listener{
 		$event->setCancelled();
 		
 		if(isset($this->wandClicks[$player->getName()]) && microtime(true) - $this->wandClicks[$player->getName()] < 0.5) {
-            	        return;
-                }
+            return;
+        }
         
-                $this->wandClicks[$player->getName()] = microtime(true);
+        $this->wandClicks[$player->getName()] = microtime(true);
 		
 		$x = $block->getX();
 		$y = $block->getY();
@@ -187,10 +190,10 @@ class EventListener implements Listener{
 		}
 		
 		if(isset($this->wandClicks[$player->getName()]) && microtime(true) - $this->wandClicks[$player->getName()] < 0.5) {
-            		return;
-        	}
+            return;
+        }
         
-        	$this->wandClicks[$player->getName()] = microtime(true);
+        $this->wandClicks[$player->getName()] = microtime(true);
 		
 		$x = $block->getX();
 		$y = $block->getY();

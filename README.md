@@ -1,4 +1,5 @@
 # BuildProtect
+[![](https://poggit.pmmp.io/shield.state/BuildProtect)](https://poggit.pmmp.io/p/BuildProtect) [![](https://poggit.pmmp.io/shield.api/BuildProtect)](https://poggit.pmmp.io/p/BuildProtect)
 
 ## General
 BuildProtect is a plugin made to protect your builds or any area. It uses wands to select positions for your areas.

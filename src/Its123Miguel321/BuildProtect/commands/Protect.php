@@ -39,7 +39,10 @@ class Protect extends Command implements PluginIdentifiableCommand{
 			return;
 		}
 		
-		$item = Item::get($this->plugin->config->get("ItemID"));
+		$id = substr($this->plugin->config->get("ItemID"), 0, strpos($this->plugin->config->get("ItemID"), ":"));
+		$meta = substr($this->plugin->config->get("ItemID"), strpos($this->plugin->config->get("ItemID"), ":") + 1);
+		
+		$item = Item::get($id, $meta);
 		$item->addEnchantment(new EnchantmentInstance(Enchantment::getEnchantment(100), 1));
 		$item->setCustomName($this->plugin->config->get("WandName"));
 		

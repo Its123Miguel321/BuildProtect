@@ -20,6 +20,7 @@ Commands|Aliases|Permissions|Description|
 - Comes with a wand for selections
 - Custom Wand Item
 - Custom Wand Name
+- Custom Area Messages
 - UI's for each command(besides /buildprotect)
 
 ## Help

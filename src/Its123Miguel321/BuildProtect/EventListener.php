@@ -52,7 +52,9 @@ class EventListener implements Listener{
 	    
 	    foreach($this->plugin->builds->get("builds", []) as $areas){
 	        if($areas["PvP"] == false){
-	            $attacker->sendMessage("§l§c(!) §r§7PvP is disabled in this area!");
+				if($this->plugin->config->get("AreaMessages") == true){
+	            	$attacker->sendMessage($this->plugin->config->get("AttackingkDisabled"));
+				}
 	            $event->setCancelled();
 	        }
 	    }
@@ -78,7 +80,9 @@ class EventListener implements Listener{
 	    
 	    foreach($this->plugin->builds->get("builds", []) as $areas){
 	        if($areas["BlockBreaking"] == false){
-	            $player->sendMessage("§l§c(!) §r§7You can not break any blocks in this area!");
+	            if($this->plugin->config->get("AreaMessages") == true){
+	            	$player->sendMessage($this->plugin->config->get("BreakingDisabled"));
+				}
 	            $event->setCancelled();
 	        }
 	    }
@@ -103,7 +107,9 @@ class EventListener implements Listener{
 	    
 	    foreach($this->plugin->builds->get("builds", []) as $areas){
 	        if($areas["BlockPlacing"] == false){
-	            $player->sendMessage("§l§c(!) §r§7You can not place any blocks in this area!");
+	            if($this->plugin->config->get("AreaMessages") == true){
+	            	$attacker->sendMessage($this->plugin->config->get("PlacingDisabled"));
+				}
 	            $event->setCancelled();
 	        }
 	    }
@@ -128,7 +134,9 @@ class EventListener implements Listener{
 	    foreach($this->plugin->builds->get("builds", []) as $areas){
 	        if($areas["Flight"] == false){
 	            if($player->isFlying()){
-	                $player->sendMessage("§l§c(!) §r§7You entered a no fly zone, you have been taken out of flight mode!");
+	                if($this->plugin->config->get("AreaMessages") == true){
+	            		$attacker->sendMessage($this->plugin->config->get("FlyingDisabled"));
+					}
 	                $player->setAllowFlight(false);
 	                $player->setFlying(false);
 	                return;

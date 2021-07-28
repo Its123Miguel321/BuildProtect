@@ -38,9 +38,9 @@ class EventListener implements Listener{
 	        return;
 	    }
 	    
-        if($attacker->hasPermission("buildprotect.bypass")){
-            return;
-        }
+	    if($attacker->hasPermission("buildprotect.bypass")){
+                return;
+             }
 	    
 	    if(!$this->plugin->isInside(new Position($attacker->getX(), $attacker->getY(), $attacker->getZ(), $attacker->getLevel()))){
 	        return;
@@ -52,9 +52,9 @@ class EventListener implements Listener{
 	    
 	    foreach($this->plugin->builds->get("builds", []) as $areas){
 	        if($areas["PvP"] == false){
-				if($this->plugin->config->get("AreaMessages") == true){
-	            	$attacker->sendMessage($this->plugin->config->get("AttackingkDisabled"));
-				}
+			    if($this->plugin->config->get("AreaMessages") == true){
+	                $attacker->sendMessage($this->plugin->config->get("AttackingkDisabled"));
+			    }
 	            $event->setCancelled();
 	        }
 	    }
@@ -108,7 +108,7 @@ class EventListener implements Listener{
 	    foreach($this->plugin->builds->get("builds", []) as $areas){
 	        if($areas["BlockPlacing"] == false){
 	            if($this->plugin->config->get("AreaMessages") == true){
-	            	$attacker->sendMessage($this->plugin->config->get("PlacingDisabled"));
+	            	$player->sendMessage($this->plugin->config->get("PlacingDisabled"));
 				}
 	            $event->setCancelled();
 	        }
@@ -135,7 +135,7 @@ class EventListener implements Listener{
 	        if($areas["Flight"] == false){
 	            if($player->isFlying()){
 	                if($this->plugin->config->get("AreaMessages") == true){
-	            		$attacker->sendMessage($this->plugin->config->get("FlyingDisabled"));
+	            		$player->sendMessage($this->plugin->config->get("FlyingDisabled"));
 					}
 	                $player->setAllowFlight(false);
 	                $player->setFlying(false);

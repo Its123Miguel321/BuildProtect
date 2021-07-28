@@ -13,3 +13,15 @@ ItemID: "288:0"
 
 # This is for what you would like to name the wand!
 WandName: "§l§6Protection §fFeather"
+
+# Set to false if you wouldn't like a message to send when an action is disabled. (BlockBreaking, BlockPlacing, PvP, Flight)
+AreaMessages: true
+
+# Message for block breaking being disabled.
+BreakingDisabled: "§cYou can not break blocks here!"
+# Message for block placing being disabled.
+PlacingDisabled: "§cYou can not place blocks here!"
+# Message for PvP being disabled.
+AttackingDisabled: "§cYou can not hit another player here!"
+# Message for Flight being disabled.
+FlyingDisabled: "§cYou can not fly in this area!"

@@ -98,8 +98,8 @@ class EventListener implements Listener{
 	    }
 	    
 	    if($player->hasPermission("buildprotect.bypass")){
-            return;
-        }
+            	return;
+            }
 	    
 	    if(!$this->plugin->isInside(new Position($block->getX(), $block->getY(), $block->getZ(), $block->getLevel()))){
 	        return;

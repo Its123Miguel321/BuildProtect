@@ -9,13 +9,18 @@
 # ================================================================================
 
 # Add the item ID you would to have as your wand! It has to be formatted as "1:0"
+# The default item for the wand is a feather(ID: 288:0)
 ItemID: "288:0"
 
 # This is for what you would like to name the wand!
+# The default name for the wand is §l§6Protection §fFeather!
 WandName: "§l§6Protection §fFeather"
 
-# Set to false if you wouldn't like a message to send when an action is disabled. (BlockBreaking, BlockPlacing, PvP, Flight)
-AreaMessages: true
+# Set to true if you would like a message to send when an action is disabled(BlockBreaking, BlockPlacing, PvP, Flight), if not keep as false.
+AreaMessages: false
+
+# Set to true if you would like the creator of an area to be able to bypass the restrictions, if not keep it as false.
+CreatorBypass: false
 
 # Message for block breaking being disabled.
 BreakingDisabled: "§cYou can not break blocks here!"

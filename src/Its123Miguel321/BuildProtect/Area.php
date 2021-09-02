@@ -2,7 +2,7 @@
 
 namespace Its123Miguel321\BuildProtect;
 
-use BuildProtect\Its123Miguel321\BuildProtect;
+use Its123Miguel321\BuildProtect\BuildProtect;
 
 class Area
 {

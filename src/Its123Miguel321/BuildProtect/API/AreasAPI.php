@@ -10,7 +10,7 @@ class AreasAPI
 	/** @var BuildProtect $main */
 	public $main;
 	/** @var EventListener $events */
-	public $events
+	public $events;
 	
 	/**
 	 * @param BuildProtect $main

@@ -5,7 +5,7 @@ namespace Its123Miguel321\BuildProtect\API;
 use Its123Miguel321\BuildProtect\Area;
 use Its123Miguel321\BuildProtect\BuildProtect;
 
-use poc
+use pocketmine\level\Position;
 
 class AreasAPI
 {
@@ -13,6 +13,8 @@ class AreasAPI
 	public $main;
 	/** @var EventListener $events */
 	public $events;
+	
+	
 	
 	/**
 	 * @param BuildProtect $main

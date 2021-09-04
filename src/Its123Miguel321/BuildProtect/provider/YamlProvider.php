@@ -43,4 +43,19 @@ class YamlProvider extends DataProvider
 		
 		return isset($areas[$area->getId()][$areas->getName()]);
 	}
+	
+	public function open() : void
+	{
+		$this->yaml = new Config($this->getMain()->getDataFolder() . "areas.yml", Config::YAML, array("areas" => []));
+	}
+	
+	public function save() : void
+	{
+		$this->yaml->save();
+	}
+	
+	public function close() : void
+	{
+		$this->save();
+	}
 }

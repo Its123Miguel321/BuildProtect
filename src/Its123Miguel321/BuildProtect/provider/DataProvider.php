@@ -33,4 +33,12 @@ abstract class DataProvider
 	public abstract function getAreaPos1(Area $area) : void;
 	
 	public abstract function getAreaPos2(Area $area) : void;
+	
+	public abstract function open() : void;
+	
+	public abstract function save() : void;
+	
+	public abstact function close() : void;
+	
+	
 }

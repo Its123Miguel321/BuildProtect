@@ -14,23 +14,23 @@ abstract class DataProvider
 		$this->plugin = $plugin;
 	}
 	
-	public abstact function areaExists(Area $area) : bool;
+	public abstract function areaExists(Area $area) : bool;
 	
-	public abstact function saveArea(Area $area) : void;
+	public abstract function saveArea(Area $area) : void;
 	
-	public abstact function deleteArea(Area $area) : void;
+	public abstract function deleteArea(Area $area) : void;
 	
-	public abstact function getArea(int $id) : Area;
+	public abstract function getArea(int $id) : Area;
 	
-	public abstact function getAreaCommands(Area $area) : void;
+	public abstract function getAreaCommands(Area $area) : void;
 	
-	public abstact function getAreaId(string $name) : int;
+	public abstract function getAreaId(string $name) : int;
 	
-	public abstact function getAreaLevel(Area $area) : void;
+	public abstract function getAreaLevel(Area $area) : void;
 	
-	public abstact function getAreaPermissions(Area $area) : void;
+	public abstract function getAreaPermissions(Area $area) : void;
 	
-	public abstact function getAreaPos1(Area $area) : void;
+	public abstract function getAreaPos1(Area $area) : void;
 	
-	public abstact function getAreaPos2(Area $area) : void;
+	public abstract function getAreaPos2(Area $area) : void;
 }

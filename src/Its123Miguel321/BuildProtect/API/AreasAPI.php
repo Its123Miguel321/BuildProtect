@@ -14,8 +14,6 @@ class AreasAPI
 	
 	public $events;
 	
-	
-	
 	/**
 	 * @param BuildProtect $main
 	 */
@@ -25,18 +23,6 @@ class AreasAPI
 		$this->events = EventListener::getInstance();
 	}
 	
-	/**
-	 * @param string $name
-	 * @param string $creator
-	 * @param Position $pos1
-	 * @param Position $pos2
-	 * @param string[] $commands
-	 * @param string[] $permissions
-	 * @param bool $breaking
-	 * @param bool $placing
-	 * @param bool $pvp
-	 * @param bool $flight
-	 */
 	public function createArea(string $name = "", string $creator = "", Position $pos1 = [], Position $pos2 = [], array $commands = [], array $permissions = [], bool $breaking = true, bool $placing = true, bool $pvp = true, bool $flight = true) : void
 	{	
 		$id = $this->countAreas();

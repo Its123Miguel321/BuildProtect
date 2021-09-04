@@ -11,12 +11,8 @@ use pocketmine\level\Position;
 class AreasAPI
 {
 	public $main;
-	
 	public $events;
 	
-	/**
-	 * @param BuildProtect $main
-	 */
 	public function __construct(BuildProtect $main)
 	{
 		$this->main = $main;
@@ -37,7 +33,6 @@ class AreasAPI
 		$level2 = $pos2->level;
 		
 		$this->saveArea(new Area($id, $name, $creator, array($x1, $y1, $z1, $level1), array($x2, $y2, $z2), $commands, $permissions, $breaking, $placing, $pvp, $flight));
-		
 	}
 	
 	public function countAreas() : void

@@ -149,7 +149,7 @@ class Area
 	/**
 	 * @param array $pos1
 	 */
-	public function setPos1(array $pos) : void
+	public function setPos1(array $pos1) : void
 	{
 		$this->pos1 = ["X" => $pos[0], "Y" => $pos[1], "Z" => $pos[2]];
 	}
@@ -157,7 +157,7 @@ class Area
 	/**
 	 * @param array $pos2
 	 */
-	public function setPos2(array $pos) : void
+	public function setPos2(array $pos2) : void
 	{
 		$this->pos2 = ["X" => $pos[0], "Y" => $pos[1], "Z" => $pos[2]];
 	}

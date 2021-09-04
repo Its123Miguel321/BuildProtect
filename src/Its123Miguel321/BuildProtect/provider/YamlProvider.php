@@ -33,13 +33,13 @@ class YamlProvider extends DataProvider
 	/**
 	 * Checks if Area name already exists
 	 * 
-	 * @param string $area
+	 * @param Area $area
 	 * 
 	 */
-	public function areaExists(string $area) : bool
+	public function areaExists(Area $area) : bool
 	{
 		$areas = $this->yaml->get("areas", []);
 		
-		return isset(array_keys($areas, ["Name" => $name], true));
+		return isset($areas[$area->getId()][$areas->getName()]);
 	}
 }

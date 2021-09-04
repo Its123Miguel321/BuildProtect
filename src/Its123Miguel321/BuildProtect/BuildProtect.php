@@ -20,19 +20,20 @@ class BuildProtect extends PluginBase implements Listener{
 	
 	public $builds;
 	
+	public static $instance;
+	
     	public function onEnable(){
+		
+		self::$instance = $this;
         	
 		$this->config = $this->getConfig();
 		
 		$this->builds = new Config($this->getDataFolder() . "builds.yml", Config::YAML, ["count" => 0, "builds" => []]);
 
-		// Registers EventListener
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 
-		// Registers all commands
 		$this->getServer()->getCommandMap()->registerAll("BuildProtect", [new Protect($this), new Save($this), new Delete($this), new Edit($this)]);
 
-		// Registers the BuildProtect enchantment
 		Enchantment::RegisterEnchantment(new Enchantment(100, "BuildProtect", Enchantment::RARITY_COMMON, 0, 0, 1));
 
 		$this->saveResource("builds.yml");
@@ -95,5 +96,10 @@ class BuildProtect extends PluginBase implements Listener{
 	
 	public function hasSelections(string $player, string $selection){
 		return isset(EventListener::$selections[$player][$selection]);
+	}
+	
+	public static function getInstance() : BuildProtect
+	{
+		return self::$instance;
 	}
 }

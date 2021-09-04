@@ -10,13 +10,13 @@ class Area
 	public $plugin;
 	
 	/** @var int $id */
-	public $id
+	public $id;
 	/** @var string $name */
 	public $name;
 	/** @var string $creator */
 	public $creator;
 	/** @var string[] $pos1 */
-	public $pos1
+	public $pos1;
 	/** @var string[] $pos2 */
 	public $pos2;
 	/** @var string[] $commands */
@@ -26,7 +26,7 @@ class Area
 	/** @var bool $blockBreaking */
 	public $blockBreaking;
 	/** @var bool $blockPlacing */
-	public $blockPlacing
+	public $blockPlacing;
 	/** @var bool $pvp */
 	public $pvp;
 	/** @var bool $flight */

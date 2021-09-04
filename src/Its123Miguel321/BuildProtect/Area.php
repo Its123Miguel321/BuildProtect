@@ -113,6 +113,33 @@ class Area
 	}
 	
 	/**
+	 * Returns the setting
+	 * 
+	 * @param string $setting
+	 *
+	 * @return bool
+	 * 
+	 */
+	public function getSettings(string $setting) : bool
+	{
+		$setting = strtolower($setting);
+		
+		if($setting === "breaking") {
+			return $this->blockBreaking;
+		} elseif($setting === "placing") {
+			return $this->blockPlacing;
+		} elseif($setting === "pvp") {
+			return $this->pvp;
+		} elseif($setting === "flight") {
+			return $this->flight;
+		} else {
+			return null;
+		}
+	}
+	
+	
+	
+	/**
 	 * @param string $command
 	 */
 	public function removeCommand(string $command) : void

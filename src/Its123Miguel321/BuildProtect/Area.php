@@ -104,12 +104,12 @@ class Area
 	
 	public function getPos1() : array
 	{
-		$this->pos1;
+		return $this->pos1;
 	}
 	
 	public function getPos2() : array
 	{
-		$this->pos2;
+		return $this->pos2;
 	}
 	
 	/**

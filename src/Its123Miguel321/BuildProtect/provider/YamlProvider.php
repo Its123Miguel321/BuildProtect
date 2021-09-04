@@ -12,7 +12,7 @@ class YamlProvider extends DataProvider
 	/** @var BuildProtect $plugin */
 	public $plugin;
 	/** @var Config $yaml */
-	public $yaml
+	public $yaml;
 	
 	
 	/**

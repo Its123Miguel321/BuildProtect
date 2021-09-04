@@ -4,6 +4,7 @@ namespace Its123Miguel321\BuildProtect\API;
 
 use Its123Miguel321\BuildProtect\Area;
 use Its123Miguel321\BuildProtect\BuildProtect;
+use Its123Miguel321\BuildProtect\EventListener;
 
 use pocketmine\level\Position;
 
@@ -38,11 +39,7 @@ class AreasAPI
 	 */
 	public function createArea(string $name = "", string $creator = "", Position $pos1 = [], Position $pos2 = [], array $commands = [], array $permissions = [], bool $breaking = true, bool $placing = true, bool $pvp = true, bool $flight = true) : void
 	{	
-		$id = $this->countAreas() + 1;
-		if($id < 0)
-		{
-			$id++;
-		}
+		$id = $this->countAreas();
 		
 		$x1 = $pos1->x;
 		$x2 = $pos2->x;

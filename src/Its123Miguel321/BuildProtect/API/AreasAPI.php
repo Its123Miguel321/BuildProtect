@@ -10,9 +10,8 @@ use pocketmine\level\Position;
 
 class AreasAPI
 {
-	/** @var BuildProtect $main */
 	public $main;
-	/** @var EventListener $events */
+	
 	public $events;
 	
 	
@@ -23,6 +22,7 @@ class AreasAPI
 	public function __construct(BuildProtect $main)
 	{
 		$this->main = $main;
+		$this->events = EventListener::getInstance();
 	}
 	
 	/**

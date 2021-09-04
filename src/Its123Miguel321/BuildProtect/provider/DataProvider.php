@@ -38,7 +38,7 @@ abstract class DataProvider
 	
 	public abstract function save() : void;
 	
-	public abstact function close() : void;
+	public abstract function close() : void;
 	
 	
 }

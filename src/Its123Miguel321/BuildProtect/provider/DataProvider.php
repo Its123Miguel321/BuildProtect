@@ -42,5 +42,8 @@ abstract class DataProvider
 	
 	public abstract function close() : void;
 	
-	
+	public abstract function getMain() : BuildProtect
+	{
+		return $this->plugin;
+	}
 }

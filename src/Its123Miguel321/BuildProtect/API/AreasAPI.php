@@ -2,6 +2,7 @@
 
 namespace Its123Miguel321\BuildProtect\API;
 
+use Its123Miguel321\BuildProtect\Area;
 use Its123Miguel321\BuildProtect\BuildProtect;
 
 use pocketmine\command\ConsoleCommandSender;

@@ -9,8 +9,6 @@ use pocketmine\command\ConsoleCommandSender;
 use pocketmine\level\Position;
 use pocketmine\Player;
 
-use function str_contains;
-
 class AreasAPI
 {
 	/** @var BuildProtect $main */
@@ -142,7 +140,7 @@ class AreasAPI
 		
 		foreach($area->getCommands() as $command)
 		{
-			if(str_contains($command, "rca ")) {
+			if(str_contains($command, "player ")) {
 				$this->getMain()->getServer()->dispatchCommand($player, str_replace("{player}", $player->getName(), $command));
 			} else {
 				$this->getMain()->getServer()->dispatchCommand(new ConsoleCommandSender(), str_replace("{player}", $player->getName(), $command));

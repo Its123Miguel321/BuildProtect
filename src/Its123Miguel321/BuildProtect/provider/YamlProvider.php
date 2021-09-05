@@ -103,7 +103,99 @@ class YamlProvider extends DataProvider
 			return new Area($id, $name, $creator, $pos1, $pos2, $commands, $permissions, $breaking, $placing, $pvp, $flight);
 		}
 		
-		return null;
+		return new Area();
+	}
+	
+	
+	
+	/**
+	 * Returns an area's commands.
+	 * 
+	 * @param Area $area
+	 * 
+	 * @return array
+	 * 
+	 */
+	public function getAreaCommands(Area $area) : array
+	{
+		return $area->getCommands();
+	}
+	
+	
+	
+	/**
+	 * Returns an area's id by it's name.
+	 * 
+	 * @param string $name
+	 * 
+	 * @return int
+	 * 
+	 */
+	public function getAreaId(string $name) : int
+	{
+		$areas = $this->yaml->get("areas", []);
+		$key = array_keys($areas, ["Name" => $name], true);
+		
+		return $key;
+	}
+	
+	
+	
+	/**
+	 * Returns an area's level.
+	 * 
+	 * @param Area $area
+	 * 
+	 * @return string
+	 *
+	 */
+	public function getAreaLevel(Area $area) : string
+	{
+		$pos1 = $area->getPos1();
+		$pos2 = $area->getPos2();
+		
+		return $pos1[3] ?? $pos2[3];
+	}
+	
+	/**
+	 * Returns an area's permissions
+	 * 
+	 * @param Area $area
+	 * 
+	 * @return array
+	 * 
+	 */
+	public function getAreaPermissions(Area $area) : array
+	{
+		return $area->getPermissions();
+	}
+	
+	
+	
+	/**
+	 * Returns the area's first position
+	 * 
+	 * @param Area $area
+	 * 
+	 * @return array
+	 * 
+	 */
+	public function getAreaPos1(Area $area) : array
+	{
+		return $area->getPos1;
+	}
+	
+	/**
+	 * Returns the area's second position
+	 *
+	 * @param Area $area
+	 *
+	 * @return array
+	 *
+	 */
+	public function getAreaPos2(Area $area) : array
+	{
+		retur $area->getPos2;
 	}
 	
 	public function open() : void

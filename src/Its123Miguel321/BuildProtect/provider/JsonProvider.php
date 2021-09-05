@@ -10,8 +10,8 @@ use pocketmine\utils\Config;
 
 class JsonProvider extends DataProvider
 {
-	/** @var BuildProtect $plugin */
-	public $plugin;
+	/** @var BuildProtect $main */
+	public $main;
 	/** @var Config $json */
 	public $json;
 	
@@ -168,7 +168,7 @@ class JsonProvider extends DataProvider
 	{
 		$count = 0;
 		
-		foreach(array_keys($this->json->get("builds", [])) as $areas)
+		foreach(array_values($this->json->get("builds", [])) as $areas)
 		{
 			$count++;
 			if($areas["Name"] === $name) {

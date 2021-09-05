@@ -9,6 +9,8 @@ use pocketmine\command\ConsoleCommandSender;
 use pocketmine\level\Position;
 use pocketmine\Player;
 
+use function str_contains;
+
 class AreasAPI
 {
 	/** @var BuildProtect $main */

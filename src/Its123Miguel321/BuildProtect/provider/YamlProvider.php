@@ -76,6 +76,36 @@ class YamlProvider extends DataProvider
 		$this->save();
 	}
 	
+	/**
+	 * Returns an area
+	 * 
+	 * @param int $id
+	 * 
+	 * @return Area
+	 * 
+	 */
+	public function getArea(int $id) : Area
+	{
+		$areas = $this->yaml->get("areas", []);
+		
+		if(isset($areas[$id])) {
+			$name = $areas[$id]["Name"];
+			$creator = $areas[$id]["Creator"];
+			$pos1 = $areas[$id]["Pos1"];
+			$pos2 = $areas[$id]["Pos2"];
+			$commands = $areas[$id]["Commands"];
+			$permissions = $areas[$id]["Permissions"];
+			$breaking = $areas[$id]["BlockBreaking"];
+			$placing = $areas[$id]["BlockPlacing"];
+			$pvp = $areas[$id]["PvP"];
+			$flight = $areas[$id]["Flight"];
+			
+			return new Area($id, $name, $creator, $pos1, $pos2, $commands, $permissions, $breaking, $placing, $pvp, $flight);
+		}
+		
+		return null;
+	}
+	
 	public function open() : void
 	{
 		$this->yaml = new Config($this->getMain()->getDataFolder() . "areas.yml", Config::YAML, array("areas" => []));

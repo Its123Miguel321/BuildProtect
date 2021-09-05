@@ -22,6 +22,10 @@ AreaMessages: false
 # Set to true if you would like the creator of an area to be able to bypass the restrictions, if not keep it as false.
 CreatorBypass: false
 
+# Choose what you would like the data to be stored as.
+# YAML | JSON
+DataProvider: "YAML"
+
 # Message for block breaking being disabled.
 BreakingDisabled: "§cYou can not break blocks here!"
 # Message for block placing being disabled.

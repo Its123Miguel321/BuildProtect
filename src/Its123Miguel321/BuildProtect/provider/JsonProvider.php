@@ -153,10 +153,15 @@ class JsonProvider extends DataProvider
 	 */
 	public function getAreaId(string $name) : int
 	{
-		$areas = $this->json->get("areas", []);
-		$key = array_keys($areas, ["Name" => $name], true);
+		$count = 0;
 		
-		return $key;
+		foreach($this->json->get("areas", []) as array_keys($areas))
+		{
+			$count++;
+			if($areas["Name" === $name]) {
+				return $count;
+			}
+		}
 	}
 	
 	
@@ -202,7 +207,7 @@ class JsonProvider extends DataProvider
 	 */
 	public function getAreaPos1(Area $area) : array
 	{
-		return $area->getPos1;
+		return $area->getPos1();
 	}
 	
 	/**
@@ -215,7 +220,7 @@ class JsonProvider extends DataProvider
 	 */
 	public function getAreaPos2(Area $area) : array
 	{
-		return $area->getPos2;
+		return $area->getPos2();
 	}
 	
 	public function open() : void
@@ -231,5 +236,10 @@ class JsonProvider extends DataProvider
 	public function close() : void
 	{
 		$this->save();
+	}
+	
+	public function getMain() : BuildProtect
+	{
+		return $this->main;
 	}
 }

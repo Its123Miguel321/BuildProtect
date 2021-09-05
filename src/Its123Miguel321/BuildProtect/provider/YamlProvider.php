@@ -44,6 +44,19 @@ class YamlProvider extends DataProvider
 		return isset($areas[$area->getId()][$areas->getName()]);
 	}
 	
+	
+	
+	/**
+	 * Counts how many areas there are.
+	 * 
+	 * @return int
+	 * 
+	 */
+	public function countAreas() : int
+	{
+		return count($this->yaml->get("areas", []));
+	}
+	
 	/**
 	 * Saves an area.
 	 * 

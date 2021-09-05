@@ -153,7 +153,7 @@ class AreasAPI
 	/**
 	 * Checks if a player has a permission in an area they go into.
 	 * 
-	 * @param string $name
+	 * @param string $areaName
 	 * 
 	 */
 	public function playerHasAreaPermissons(Player $player, string $areaName) : bool

@@ -120,7 +120,7 @@ class Area
 	 * @return bool
 	 * 
 	 */
-	public function getSettings(string $setting) : bool
+	public function getSetting(string $setting) : bool
 	{
 		$setting = strtolower($setting);
 		

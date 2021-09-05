@@ -2,6 +2,7 @@
 
 namespace Its123Miguel321\BuildProtect;
 
+use Its123Miguel321\BuildProtect\API\AreasAPI;
 use Its123Miguel321\BuildProtect\commands\Save;
 use Its123Miguel321\BuildProtect\commands\Delete;
 use Its123Miguel321\BuildProtect\commands\Edit;
@@ -29,7 +30,7 @@ class BuildProtect extends PluginBase implements Listener
 	
 	
 	
-    public function onEnable()
+	public function onEnable()
 	{
 		self::$instance = $this;
 		

@@ -7,12 +7,16 @@ use Its123Miguel321\BuildProtect\commands\Delete;
 use Its123Miguel321\BuildProtect\commands\Edit;
 use Its123Miguel321\BuildProtect\commands\Protect;
 use Its123Miguel321\BuildProtect\EventListener;
+use Its123Miguel321\BuildProtect\provider\DataProvider;
+use Its123Miguel321\BuildProtect\provider\YamlProvider;
+use Its123Miguel321\BuildProtect\provider\JsonProvider;
 
 use pocketmine\event\Listener;
 use pocketmine\item\enchantment\Enchantment;
 use pocketmine\plugin\PluginBase;
 
-class BuildProtect extends PluginBase implements Listener{
+class BuildProtect extends PluginBase implements Listener
+{
 	
 	/** @var DataProvider $provider */
 	public $provider;
@@ -81,7 +85,19 @@ class BuildProtect extends PluginBase implements Listener{
 	
 	public function setProvider() : void
 	{
-		$provider =strtolower($this->getConfig()->get("DataProvider"));
+		$provider = strtolower($this->getConfig()->get("DataProvider"));
+		
+		switch($provider)
+		{
+			case "json":
+				$this->provider = new JsonProvider($this);
+			break;
+				
+			case "yaml"
+			default:
+				$this->provider = new YamlProvider($this);
+			break;
+		}
 	}
 	
 	

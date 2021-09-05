@@ -97,6 +97,11 @@ class Area
 		return $this->id;
 	}
 	
+	public function getName() : string
+	{
+		return $this->name;
+	}
+	
 	public function getPermissions() : array
 	{
 		return $this->permissions;

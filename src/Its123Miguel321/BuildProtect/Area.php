@@ -133,7 +133,7 @@ class Area
 		} elseif($setting === "flight") {
 			return $this->flight;
 		} else {
-			return null;
+			return false;
 		}
 	}
 	

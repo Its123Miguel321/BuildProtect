@@ -155,7 +155,7 @@ class JsonProvider extends DataProvider
 	{
 		$count = 0;
 		
-		foreach($this->json->get("areas", []) as array_keys($areas))
+		foreach(array_keys($this->json->get("areas", [])) as $areas)
 		{
 			$count++;
 			if($areas["Name" === $name]) {

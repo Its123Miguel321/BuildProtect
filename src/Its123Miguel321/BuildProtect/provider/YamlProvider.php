@@ -195,7 +195,7 @@ class YamlProvider extends DataProvider
 	 */
 	public function getAreaPos2(Area $area) : array
 	{
-		retur $area->getPos2;
+		return $area->getPos2;
 	}
 	
 	public function open() : void

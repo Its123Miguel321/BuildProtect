@@ -220,7 +220,7 @@ class YamlProvider extends DataProvider
 	
 	public function open() : void
 	{
-		$this->yaml = new Config($this->getMain()->getDataFolder() . "areas.yml", Config::YAML, array("areas" => []));
+		$this->yaml = new Config($this->getMain()->getDataFolder() . "builds.yml", Config::YAML, array("builds" => []));
 	}
 	
 	public function save() : void

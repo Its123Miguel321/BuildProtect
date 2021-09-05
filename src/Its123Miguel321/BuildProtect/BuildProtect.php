@@ -16,86 +16,35 @@ use pocketmine\utils\Config;
 
 class BuildProtect extends PluginBase implements Listener{
 	
-	public $config;
-	
-	public $builds;
-	
+	/** @var DataProvider $provider */
+	public $provider;
+	/** @var EventListener $eventListener */
+	public $eventListener;
+	/** @var AreasAPI $api */
+	public $api;
 	public static $instance;
 	
-    	public function onEnable(){
-		
+    public function onEnable()
+	{
 		self::$instance = $this;
-        	
-		$this->config = $this->getConfig();
 		
-		$this->builds = new Config($this->getDataFolder() . "builds.yml", Config::YAML, ["count" => 0, "builds" => []]);
-
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
-
+		
 		$this->getServer()->getCommandMap()->registerAll("BuildProtect", [new Protect($this), new Save($this), new Delete($this), new Edit($this)]);
-
+		
 		Enchantment::RegisterEnchantment(new Enchantment(100, "BuildProtect", Enchantment::RARITY_COMMON, 0, 0, 1));
-
+		
 		$this->saveResource("builds.yml");
 	}
+	
+	public function getApi() : AreasAPI
+	{
+		return $this->api;
+	}
     	
-	public function bpExists(string $build){
-		$builds = $this->builds->get("builds", []);
-		return isset($builds[$build]);
-	}
-	
-	public function createBP(string $build, array $pos1, array $pos2, bool $break = true, bool $place = true, bool $pvp = true, bool $fly = true){
-		$builds = $this->builds->get("builds", []);
-		if(!$this->bpExists($build)){
-			$builds[$build] = ["name" => $build, "pos1" => $pos1, "pos2" => $pos2, "PvP" => $pvp, "BlockPlacing" => $place, "BlockBreaking" => $break, "Flight" => $fly];
-			$this->builds->set("builds", $builds);
-			$this->builds->set("count", $this->builds->get("count") + 1);
-			$this->builds->save();
-			return true;
-		}
-		return false;
-	}
-	
-	public function deleteBP(string $build){
-		$builds = $this->builds->get("builds", []);
-		if($this->bpExists($build)){
-			unset($builds[$build]);
-			$this->builds->set("count", $this->builds->get("count") - 1);
-			$this->builds->set("builds", $builds);
-			$this->builds->save();
-			return true;
-		}
-		return false;
-	}
-	
-	public function getBP(string $build){
-		$builds = $this->builds->get("builds", []);
-		if($this->bpExists($build)){
-			return $builds[$build];
-		}
-		return false;
-	}
-	
-	public function isInside(Position $pos){
-		foreach($this->builds->get("builds", []) as $build){
-			$x = array_flip(range($build["pos1"]["x"], $build["pos2"]["x"]));
-			$y = array_flip(range($build["pos1"]["y"], $build["pos2"]["y"]));
-			$z = array_flip(range($build["pos1"]["z"], $build["pos2"]["z"]));
-			if(isset($x[$pos->getX()])){
-				if(isset($y[$pos->getY()])){
-					if(isset($z[$pos->getZ()])){
-					    if($pos->getLevel()->getName() == $build["pos1"]["level"]){
-						    return true;
-					    }
-					}
-				}
-			}
-		}
-		return false;
-	}
-	
-	public function hasSelections(string $player, string $selection){
-		return isset(EventListener::$selections[$player][$selection]);
+	public function getProvider() : DataProvider
+	{
+		return $this->provider;
 	}
 	
 	public static function getInstance() : BuildProtect

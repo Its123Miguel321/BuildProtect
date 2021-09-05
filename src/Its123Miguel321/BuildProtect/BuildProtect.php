@@ -21,8 +21,8 @@ class BuildProtect extends PluginBase implements Listener
 	
 	/** @var DataProvider $provider */
 	public $provider;
-	/** @var EventListener $eventListener */
-	public $eventListener;
+	/** @var EventListener $events */
+	public $events;
 	/** @var AreasAPI $api */
 	public $api;
 	/** @var BuildProtect $instance */
@@ -33,6 +33,9 @@ class BuildProtect extends PluginBase implements Listener
 	public function onEnable()
 	{
 		self::$instance = $this;
+		
+		$this->events = new EventListener($this);
+		$this->api = new AreasAPI($this)
 		
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 		

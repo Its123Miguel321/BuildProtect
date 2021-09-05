@@ -35,7 +35,7 @@ class BuildProtect extends PluginBase implements Listener
 		self::$instance = $this;
 		
 		$this->events = new EventListener($this);
-		$this->api = new AreasAPI($this)
+		$this->api = new AreasAPI($this);
 		
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 		

@@ -22,17 +22,17 @@ abstract class DataProvider
 	
 	public abstract function getArea(int $id) : Area;
 	
-	public abstract function getAreaCommands(Area $area) : void;
+	public abstract function getAreaCommands(Area $area) : array;
 	
 	public abstract function getAreaId(string $name) : int;
 	
-	public abstract function getAreaLevel(Area $area) : void;
+	public abstract function getAreaLevel(Area $area) : string;
 	
-	public abstract function getAreaPermissions(Area $area) : void;
+	public abstract function getAreaPermissions(Area $area) : array;
 	
-	public abstract function getAreaPos1(Area $area) : void;
+	public abstract function getAreaPos1(Area $area) : array;
 	
-	public abstract function getAreaPos2(Area $area) : void;
+	public abstract function getAreaPos2(Area $area) : array;
 	
 	public abstract function open() : void;
 	

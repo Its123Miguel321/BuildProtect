@@ -66,7 +66,7 @@ class AreasAPI
 	{
 		$id = $this->getMain()->getProvider()->countAreas() + 1;
 		
-		$this->getMain()->getProvider()->saveArea(new Area($id, $name, $creator, $pos1, $pos2, $commands, $permissons, $breaking, $placing, $pvp, $flight));
+		$this->getMain()->getProvider()->saveArea(new Area($id, $name, $creator, $pos1, $pos2, $commands, $permissions, $breaking, $placing, $pvp, $flight));
 	}
 	
 	
@@ -106,7 +106,7 @@ class AreasAPI
 			$y = array_flip(range($pos1[1], $pos2[1]));
 			$z = array_flip(range($pos1[2], $pos2[2]));
 			$level = $this->getMain()->getProvider()->getAreaLevel($area);
-			if($pos->getLevel() === $level)
+			if($pos->getLevel()->getName() === $level)
 			{
 				if(isset($x[$pos->getX()]))
 				{
@@ -161,13 +161,14 @@ class AreasAPI
 		$id = $this->getMain()->getProvider()->getAreaId($areaName);
 		$area = $this->getMain()->getProvider()->getArea($id);
 		
-		foreach($this->getMain()->getProvider()->getAreaPermissions() as $permission)
+		foreach($this->getMain()->getProvider()->getAreaPermissions($area) as $permission)
 		{
-			if($player->hasPermission($permisson))
+			if($player->hasPermission($permission))
 			{
 				return true;
 			}
 		}
+		return false;
 	}
 	
 	public function getSelections(Player $player) : array

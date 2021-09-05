@@ -24,6 +24,8 @@ abstract class DataProvider
 	
 	public abstract function getArea(int $id) : Area;
 	
+	public abstract function getAreas() : array;
+	
 	public abstract function getAreaCommands(Area $area) : array;
 	
 	public abstract function getAreaId(string $name) : int;

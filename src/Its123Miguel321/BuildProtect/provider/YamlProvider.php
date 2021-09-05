@@ -10,8 +10,8 @@ use pocketmine\utils\Config;
 
 class YamlProvider extends DataProvider
 {
-	/** @var BuildProtect $plugin */
-	public $plugin;
+	/** @var BuildProtect $main */
+	public $main;
 	/** @var Config $yaml */
 	public $yaml;
 	

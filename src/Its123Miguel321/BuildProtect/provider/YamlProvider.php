@@ -40,7 +40,7 @@ class YamlProvider extends DataProvider
 	 */
 	public function areaExists(Area $area) : bool
 	{
-		$areas = $this->yaml->get("areas", []);
+		$areas = $this->yaml->get("builds", []);
 		
 		return isset($areas[$area->getId()][$areas->getName()]);
 	}
@@ -55,7 +55,7 @@ class YamlProvider extends DataProvider
 	 */
 	public function countAreas() : int
 	{
-		return count($this->yaml->get("areas", []));
+		return count($this->yaml->get("builds", []));
 	}
 	
 	
@@ -68,11 +68,11 @@ class YamlProvider extends DataProvider
 	 */
 	public function saveArea(Area $area) : void
 	{
-		$areas = $this->yaml->get("areas", []);
+		$areas = $this->yaml->get("builds", []);
 		
 		$areas[$area->getId()] = array("Name" => $area->getName(), "Creator" => $area->getCreator(), "Pos1" => $area->getPos1(), "Pos2" => $area->getPos2, "Commands" => $area->getCommands(), "Permissions" => $area->getPermissions(), "BlockBreaking" => $area->getSetting("Breaking"), "BlockPlacing" => $area->getSetting("Placing"), "PvP" => $area->getSetting("PvP"), "Flight" => $area->getSetting("Flight"));
 		
-		$this->yaml->set("areas", $areas);
+		$this->yaml->set("builds", $areas);
 		$this->save();
 	}
 	
@@ -86,11 +86,11 @@ class YamlProvider extends DataProvider
 	 */
 	public function deleteArea(Area $area) : void
 	{
-		$areas = $this->yaml->get("areas", []);
+		$areas = $this->yaml->get("builds", []);
 		
 		unset($areas[$area->getId()]);
 		
-		$this->yaml->set("areas", $areas);
+		$this->yaml->set("builds", $areas);
 		$this->save();
 	}
 	
@@ -106,7 +106,7 @@ class YamlProvider extends DataProvider
 	 */
 	public function getArea(int $id) : Area
 	{
-		$areas = $this->yaml->get("areas", []);
+		$areas = $this->yaml->get("builds", []);
 		
 		if(isset($areas[$id])) {
 			$name = $areas[$id]["Name"];
@@ -124,6 +124,19 @@ class YamlProvider extends DataProvider
 		}
 		
 		return new Area();
+	}
+	
+	
+	
+	/**
+	 * Returns all areas.
+	 * 
+	 * @return array
+	 * 
+	 */
+	public function getAreas() : array
+	{
+		return $this->yaml->get("builds", []);
 	}
 	
 	
@@ -153,10 +166,15 @@ class YamlProvider extends DataProvider
 	 */
 	public function getAreaId(string $name) : int
 	{
-		$areas = $this->yaml->get("areas", []);
-		$key = array_keys($areas, ["Name" => $name], true);
+		$count = 0;
 		
-		return $key;
+		foreach(array_keys($this->yaml->get("builds", [])) as $areas)
+		{
+			$count++;
+			if($areas["Name" === $name]) {
+				return $count;
+			}
+		}
 	}
 	
 	
@@ -202,7 +220,7 @@ class YamlProvider extends DataProvider
 	 */
 	public function getAreaPos1(Area $area) : array
 	{
-		return $area->getPos1;
+		return $area->getPos1();
 	}
 	
 	/**
@@ -215,7 +233,7 @@ class YamlProvider extends DataProvider
 	 */
 	public function getAreaPos2(Area $area) : array
 	{
-		return $area->getPos2;
+		return $area->getPos2();
 	}
 	
 	public function open() : void
@@ -231,5 +249,10 @@ class YamlProvider extends DataProvider
 	public function close() : void
 	{
 		$this->save();
+	}
+	
+	public function getMain() : BuildProtect
+	{
+		return $this->main;
 	}
 }

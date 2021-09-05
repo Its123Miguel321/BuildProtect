@@ -16,6 +16,8 @@ abstract class DataProvider
 	
 	public abstract function areaExists(Area $area) : bool;
 	
+	public abstract function countAreas() : int;
+	
 	public abstract function saveArea(Area $area) : void;
 	
 	public abstract function deleteArea(Area $area) : void;

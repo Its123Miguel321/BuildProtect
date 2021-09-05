@@ -175,6 +175,7 @@ class JsonProvider extends DataProvider
 				return $count;
 			}
 		}
+		return -1;
 	}
 	
 	

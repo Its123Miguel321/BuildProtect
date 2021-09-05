@@ -70,7 +70,7 @@ class JsonProvider extends DataProvider
 	{
 		$areas = $this->json->get("builds", []);
 		
-		$areas[$area->getId()] = array("Name" => $area->getName(), "Creator" => $area->getCreator(), "Pos1" => $area->getPos1(), "Pos2" => $area->getPos2, "Commands" => $area->getCommands(), "Permissions" => $area->getPermissions(), "BlockBreaking" => $area->getSetting("Breaking"), "BlockPlacing" => $area->getSetting("Placing"), "PvP" => $area->getSetting("PvP"), "Flight" => $area->getSetting("Flight"));
+		$areas[$area->getId()] = array("Name" => $area->getName(), "Creator" => $area->getCreator(), "Pos1" => $area->getPos1(), "Pos2" => $area->getPos2(), "Commands" => $area->getCommands(), "Permissions" => $area->getPermissions(), "BlockBreaking" => $area->getSetting("Breaking"), "BlockPlacing" => $area->getSetting("Placing"), "PvP" => $area->getSetting("PvP"), "Flight" => $area->getSetting("Flight"));
 		
 		$this->json->set("builds", $areas);
 		$this->save();
@@ -171,7 +171,7 @@ class JsonProvider extends DataProvider
 		foreach(array_keys($this->json->get("builds", [])) as $areas)
 		{
 			$count++;
-			if($areas["Name" === $name]) {
+			if($areas["Name"] === $name) {
 				return $count;
 			}
 		}

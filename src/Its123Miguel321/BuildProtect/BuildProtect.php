@@ -94,7 +94,7 @@ class BuildProtect extends PluginBase implements Listener
 				$this->provider = new JsonProvider($this);
 			break;
 				
-			case "yaml"
+			case "yaml":
 			default:
 				$this->provider = new YamlProvider($this);
 			break;

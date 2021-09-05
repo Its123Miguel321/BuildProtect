@@ -8,11 +8,9 @@ use Its123Miguel321\BuildProtect\commands\Edit;
 use Its123Miguel321\BuildProtect\commands\Protect;
 use Its123Miguel321\BuildProtect\EventListener;
 
-use pocketmine\item\enchantment\Enchantment;
 use pocketmine\event\Listener;
-use pocketmine\level\Position;
+use pocketmine\item\enchantment\Enchantment;
 use pocketmine\plugin\PluginBase;
-use pocketmine\utils\Config;
 
 class BuildProtect extends PluginBase implements Listener{
 	
@@ -22,7 +20,10 @@ class BuildProtect extends PluginBase implements Listener{
 	public $eventListener;
 	/** @var AreasAPI $api */
 	public $api;
+	/** @var BuildProtect $instance */
 	public static $instance;
+	
+	
 	
     public function onEnable()
 	{
@@ -37,16 +38,60 @@ class BuildProtect extends PluginBase implements Listener{
 		$this->saveResource("builds.yml");
 	}
 	
+	
+	
+	/**
+	 * Returns the AreasAPI
+	 * 
+	 * @return AreasAPI
+	 *
+	 */
 	public function getApi() : AreasAPI
 	{
 		return $this->api;
 	}
-    	
+	
+	
+	
+	/**
+	 * Returns the EventListener
+	 * 
+	 * @return EventListener
+	 *
+	 */
+	public function getEventListener() : EventListener
+	{
+		return $this->events;
+	}
+    
+	
+	
+	/**
+	 * Returns the DataProvider
+	 * 
+	 * @return DataProvider
+	 *
+	 */
 	public function getProvider() : DataProvider
 	{
 		return $this->provider;
 	}
 	
+	
+	
+	public function setProvider() : void
+	{
+		$provider =strtolower($this->getConfig()->get("DataProvider"));
+	}
+	
+	
+	
+	/**
+	 * Returns this file
+	 * 
+	 * @return BuildProtect
+	 *
+	 */
 	public static function getInstance() : BuildProtect
 	{
 		return self::$instance;

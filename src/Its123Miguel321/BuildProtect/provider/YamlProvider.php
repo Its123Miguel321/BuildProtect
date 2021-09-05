@@ -16,6 +16,7 @@ class YamlProvider extends DataProvider
 	public $yaml;
 	
 	
+	
 	/**
 	 * YamlProvider constructer.
 	 * 
@@ -57,6 +58,8 @@ class YamlProvider extends DataProvider
 		return count($this->yaml->get("areas", []));
 	}
 	
+	
+	
 	/**
 	 * Saves an area.
 	 * 
@@ -73,6 +76,8 @@ class YamlProvider extends DataProvider
 		$this->save();
 	}
 	
+	
+	
 	/**
 	 * Deletes an area.
 	 * 
@@ -88,6 +93,8 @@ class YamlProvider extends DataProvider
 		$this->yaml->set("areas", $areas);
 		$this->save();
 	}
+	
+	
 	
 	/**
 	 * Returns an area

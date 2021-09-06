@@ -140,7 +140,7 @@ class AreasAPI
 		
 		foreach($area->getCommands() as $command)
 		{
-			if(str_contains($command, "player ")) {
+			if(strpos($command, "/player ") !== false) {
 				$this->getMain()->getServer()->dispatchCommand($player, str_replace("{player}", $player->getName(), $command));
 			} else {
 				$this->getMain()->getServer()->dispatchCommand(new ConsoleCommandSender(), str_replace("{player}", $player->getName(), $command));

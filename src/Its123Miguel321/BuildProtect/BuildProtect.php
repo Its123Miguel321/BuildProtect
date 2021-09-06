@@ -3,10 +3,6 @@
 namespace Its123Miguel321\BuildProtect;
 
 use Its123Miguel321\BuildProtect\API\AreasAPI;
-use Its123Miguel321\BuildProtect\commands\Save;
-use Its123Miguel321\BuildProtect\commands\Delete;
-use Its123Miguel321\BuildProtect\commands\Edit;
-use Its123Miguel321\BuildProtect\commands\Protect;
 use Its123Miguel321\BuildProtect\EventListener;
 use Its123Miguel321\BuildProtect\provider\DataProvider;
 use Its123Miguel321\BuildProtect\provider\YamlProvider;
@@ -34,16 +30,18 @@ class BuildProtect extends PluginBase implements Listener
 	{
 		self::$instance = $this;
 		
+		@mkdir($this->getDataFolder() . "builds.yml");
+		$this->saveResource("builds.yml");
+		
 		$this->events = new EventListener($this);
 		$this->api = new AreasAPI($this);
 		
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 		
-		$this->getServer()->getCommandMap()->registerAll("BuildProtect", [new Protect($this), new Save($this), new Delete($this), new Edit($this)]);
+		$this->getServer()->getCommandMap()->register("BuildProtect", new BuildProtectCommands($this));
 		
 		Enchantment::RegisterEnchantment(new Enchantment(100, "BuildProtect", Enchantment::RARITY_COMMON, 0, 0, 1));
-		
-		$this->saveResource("builds.yml");
+
 	}
 	
 	

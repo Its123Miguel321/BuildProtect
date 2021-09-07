@@ -61,7 +61,7 @@ class BuildProtectCommands extends Command implements PluginIdentifiableCommand
 					return;
 				}
 				
-				// Ty shane for this part :D
+				// Ty sn3akrr for this part :D
 				$data = explode(":", $this->getMain()->getConfig()->get("ItemID"));
 				$id = $data[0];
 				$meta = $data[1];
@@ -179,6 +179,48 @@ class BuildProtectCommands extends Command implements PluginIdentifiableCommand
 				$form->addDropDown("§6Select an area:", $names);
 				$form->addToggle("§6Confirmation", false);
 				$sender->sendForm($form);
+			break;
+			break;
+				
+			case "edit":
+			case "e":
+				
+			break;
+			break;
+				
+			case "addpermission":
+			case "ap":
+			
+			break;
+			break;
+				
+			case "addcommand":
+			case "ac":
+				
+			break;
+			break;
+				
+			case "removepermission":
+			case "rp":
+			
+			break;
+			break;
+				
+			case "removecommand":
+			case "rc":
+				
+			break;
+			break;
+				
+			case "list":
+			case "l":
+			
+			break;
+			break;
+				
+			case "help":
+			case "h":
+				
 			break;
 			break;
 		}

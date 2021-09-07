@@ -55,7 +55,7 @@ class EventListener implements Listener{
 			{
 				$areaName = $area["Name"];
 				
-				if($attacker->hasPermission("buildprotect.bypass") || $attacker->hasPermission("buildprotect.admin") || $this->getMain()->getApi()->playerHasAreaPermissions($attacker, $areaName)))
+				if($attacker->hasPermission("buildprotect.bypass") || $attacker->hasPermission("buildprotect.admin") || $this->getMain()->getApi()->playerHasAreaPermissions($attacker, $areaName))
 				{
 					return;
 				}
@@ -97,7 +97,7 @@ class EventListener implements Listener{
 			{
 				$areaName = $area["Name"];
 				
-				if($player->hasPermission("buildprotect.bypass") || $player->hasPermission("buildprotect.admin") || $this->getMain()->getApi()->playerHasAreaPermissions($player, $areaName)))
+				if($player->hasPermission("buildprotect.bypass") || $player->hasPermission("buildprotect.admin") || $this->getMain()->getApi()->playerHasAreaPermissions($player, $areaName))
 				{
 					return;
 				}
@@ -139,7 +139,7 @@ class EventListener implements Listener{
 			{
 				$areaName = $area["Name"];
 				
-				if($player->hasPermission("buildprotect.bypass") || $player->hasPermission("buildprotect.admin") || $this->getMain()->getApi()->playerHasAreaPermissions($player, $areaName)))
+				if($player->hasPermission("buildprotect.bypass") || $player->hasPermission("buildprotect.admin") || $this->getMain()->getApi()->playerHasAreaPermissions($player, $areaName))
 				{
 					return;
 				}
@@ -180,7 +180,7 @@ class EventListener implements Listener{
 			{
 				$areaName = $area["Name"];
 				
-				if($player->hasPermission("buildprotect.bypass") || $player->hasPermission("buildprotect.admin") || $this->getMain()->getApi()->playerHasAreaPermissions($player, $areaName)))
+				if($player->hasPermission("buildprotect.bypass") || $player->hasPermission("buildprotect.admin") || $this->getMain()->getApi()->playerHasAreaPermissions($player, $areaName))
 				{
 					return;
 				}
@@ -200,71 +200,79 @@ class EventListener implements Listener{
 		}
 	}
 	
-	public function onPos1(BlockBreakEvent $event){
-		
+	
+	
+	/**
+	 * Checks for when first selection is selected with wand.
+	 * 
+	 * @param BlockBreakEvent $event
+	 *
+	 */
+	public function onPos1(BlockBreakEvent $event)
+	{	
 		$player = $event->getPlayer();
 		$block = $event->getBlock();
 		$item = $event->getItem();
 		
-		if($item->getId() . ":" . $item->getDamage() !== $this->plugin->config->get("ItemID") && $item->getName() !== $this->plugin->config->get("WandName")){
+		if($event->isCancelled())
+		{
 			return;
 		}
 		
-		if($event->isCancelled()){
+		if(!($item->getId() . ":" . $item->getDamage() == $this->getMain()->getApi()->getWandId() && $item->getName() == $this->getMain()->getApi->getWandName()))
+		{
 			return;
 		}
 		
 		$event->setCancelled();
 		
-		if(isset($this->wandClicks[$player->getName()]) && microtime(true) - $this->wandClicks[$player->getName()] < 0.5) {
-            return;
-        }
-        
-        $this->wandClicks[$player->getName()] = microtime(true);
+		if(isset($this->wandClicks[$player->getName()]) && microtime(true) - $this->wandClicks[$player->getName()] < 0.5)
+		{
+			return;
+		}
 		
+		$this->wandClicks[$player->getName()] = microtime(true);
 		$x = $block->getX();
 		$y = $block->getY();
 		$z = $block->getZ();
 		$level = $block->getLevel()->getName();
-		
-		self::$selections[$player->getName()]["pos1"] = ["x" => $x, "y" => $y, "z" => $z, "level" => $level];
-		
+		self::$selections[$player->getName()]["pos1"] = ["X" => $x, "Y" => $y, "Z" => $z, "Level" => $level];
 		$player->sendMessage("§l§a(!) §r§7Selected first position at §6" . $x . "§7, §6" . $y . "§7, §6" . $z . " §7in §6" . $level . "§7!");
 	}
 	
-	public function onPos2(PlayerInteractEvent $event){
-		
+	public function onPos2(PlayerInteractEvent $event)
+	{	
 		$player = $event->getPlayer();
 		$block = $event->getBlock();
 		$item = $event->getItem();
 		
-		if($item->getId() . ":" . $item->getDamage() !== $this->plugin->config->get("ItemID") && $item->getName() !== $this->plugin->config->get("WandName")){
+		if($event->isCancelled())
+		{
 			return;
 		}
 		
-		if($event->isCancelled()){
+		if($item->getId() . ":" . $item->getDamage() !== $this->getMain()->getApi()->getWandId() && $item->getName() !== $this->getMain()->getApi->getWandName())
+		{
 			return;
 		}
 		
 		$event->setCancelled();
 		
-		if($event->getAction() !== $event::RIGHT_CLICK_BLOCK){
+		if(!($event->getAction() == $event::RIGHT_CLICK_BLOCK))
+		{
 			return;
 		}
 		
 		if(isset($this->wandClicks[$player->getName()]) && microtime(true) - $this->wandClicks[$player->getName()] < 0.5) {
-            return;
-        }
-        
-        $this->wandClicks[$player->getName()] = microtime(true);
-		
+			return;
+		}
+
+		$this->wandClicks[$player->getName()] = microtime(true);
 		$x = $block->getX();
 		$y = $block->getY();
 		$z = $block->getZ();
 		$level = $block->getLevel()->getName();
-		
 		self::$selections[$player->getName()]["pos2"] = ["x" => $x, "y" => $y, "z" => $z, "level" => $level];
-		
 		$player->sendMessage("§l§a(!) §r§7Selected second position at §6" . $x . "§7, §6" . $y . "§7, §6" . $z . " §7in §6" . $level . "§7!");
 	}
 		 

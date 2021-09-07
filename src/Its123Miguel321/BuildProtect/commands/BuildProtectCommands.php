@@ -145,7 +145,7 @@ class BuildProtectCommands extends Command implements PluginIdentifiableCommand
 				}
 				
 				$builds = $this->getMain()->getProvider()->getAreas();
-				$names = []
+				$names = [];
 					
 				foreach(array_values($builds) as $build)
 				{

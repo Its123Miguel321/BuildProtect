@@ -61,8 +61,10 @@ class BuildProtectCommands extends Command implements PluginIdentifiableCommand
 					return;
 				}
 				
-				$id = substr($this->getMain()->getConfig()->get("ItemID"), 0, strpos($this->getMain()->getConfig()->get("ItemID"), ":"));
-				$meta = substr($this->getMain()->getConfig()->get("ItemID"), strpos($this->getMain()->getConfig()->get("ItemID"), ":") + 1);
+				// Ty shane for this part :D
+				$data = explode(":", $this->getMain()->getConfig()->get("ItemID"));
+				$id = $data[0];
+				$meta = $data[1];
 				
 				$item = Item::get($id, $meta);
 				$item->addEnchantment(new EnchantmentInstance(Enchantment::getEnchantment(100), 1));

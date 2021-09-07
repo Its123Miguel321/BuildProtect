@@ -184,7 +184,63 @@ class BuildProtectCommands extends Command implements PluginIdentifiableCommand
 				
 			case "edit":
 			case "e":
+				if(!($sender->hasPermission("buildprotect.edit") || $sender->hasPermission("buildprotect.admin")))
+				{
+					$sender->sendMessage("§l§c(!) §r§7You do not have permission to use this command");
+					return;
+				}
 				
+				$builds = $this->getMain()->getProvider()->getAreas();
+				$names = [];
+					
+				foreach(array_values($builds) as $build)
+				{
+					array_push($names, $build["Name"]);
+				}
+				
+				if(count($names) == 0)
+				{
+					$sender->sendMessage("§l§c(!) §r§7No protected areas exist!");
+					return;	
+				}
+				
+				$breaking = false;
+				$placing = false;
+				$pvp = false;
+				$flight = false;
+				
+				$form = new CustomForm(function(Player $sender, $data) use($names){
+					
+					if($data === null)
+					{
+						return;
+					}
+					
+					if(!($this->getMain()->getApi()->areaExists($names[$data[1]])))
+					{
+						$sender->sendMessage("§l§c(!) §r§7Can not edit area, it no longer exists!");
+						return;
+					}
+					
+					if($data[8] == true)
+					{
+						if(!($this->getMain()->getApi()->hasSelection($sender, "pos1") && $this->getMain()->getApi()->hasSelection($sender, "pos2")))
+						{
+							$sender->sendMessage("§l§c(!) §r§7You must have 2 positions selected!");
+							return;
+						}
+						
+						$selections = $this->getMain()->getApi()->getSelections();
+						
+						if(!($selections["pos1"][3] !== $selections["pos2"][3]))
+						{
+							$sender->sendMessage("§l§c(!) §r§7Selections must be on the same level!");
+							return;
+						}
+					}
+					
+					
+				});
 			break;
 			break;
 				

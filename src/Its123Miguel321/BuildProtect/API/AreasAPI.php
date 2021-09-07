@@ -171,15 +171,63 @@ class AreasAPI
 		return false;
 	}
 	
+	
+	
+	/**
+	 * Returns a players selections.
+	 *
+	 * @param Player $player
+	 * 
+	 * @return array
+	 */
 	public function getSelections(Player $player) : array
 	{
 		return $this->getMain()->getEventListener()->selections[$player->getName()];
 	}
 	
+	
+	
+	/**
+	 * Checks if a player has a selection.
+	 *
+	 * @param Player $player
+	 * @param string $selection
+	 *
+	 * @return bool
+	 *
+	 */
 	public function hasSelection(Player $player, string $selection) : bool
 	{
 		return isset($this->getMain()->getEventListener()->selections[$player->getName()][$selection]);
 	}
+	
+	
+	
+	/**
+	 * Returns the Wand ID
+	 *
+	 * @return string
+	 *
+	 */
+	public function getWandId() : string
+	{
+		return $this->getMain()->getConfig()->get("ItemID");
+	}
+	
+	
+	
+	/**
+	 * Returns the Wand Name.
+	 *
+	 * @return string
+	 *
+	 */
+	public function getWandName() : string
+	{
+		return $this->getMain()->getConfig()->get("WandName");
+	}
+	
+	
 	
 	/**
 	 * Return the Main file of this plugin

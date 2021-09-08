@@ -8,10 +8,17 @@ Commands|Aliases|Permissions|Description|
 |-----------|-----------|-----------|-----------|
 |||buildprotect.admin|Gives access to all BuildProtect commands|
 |||buildprotect.bypass|Bypass the events cancelled in areas|
-|/buildprotect|/bp|buildprotect.wand|Access to wand command|
-|/protectsave|/ps|buildprotect.save|Access to save command|
-|/protectedit|/pe|buildprotect.edit|Access to edit command|
-|/protectdelete|/pd|buildprotect.delete|Access to delete command|
+|/buildprotect wand|/bp w|buildprotect.wand|Access to wand command|
+|/buildprotect save|/bp s|buildprotect.save|Access to save command|
+|/buildprotect edit|/bp e|buildprotect.edit|Access to edit command|
+|/buildprotect delete|/bp d|buildprotect.delete|Access to delete command|
+|/buildprotect addcommand|/bp ac|buildprotect.addcommand|Access to addcommand command|
+|/buildprotect removecommand|/bp rc|buildprotect.removecommand|Access to removecommand command|
+|/buildprotect addpermission|/bp a|buildprotect.addpermission|Access to addpermission command|
+|/buildprotect removepermission|/bp rp|buildprotect.removepermission|Access to removepermission command|
+|/buildprotect list|/bp l|buildprotect.list|Access to list command|
+|/buildprotect help|/bp h|buildprotect.help|Access to help page|
+
 
 ## Features
 - Create areas

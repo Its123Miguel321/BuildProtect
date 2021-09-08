@@ -24,6 +24,12 @@ Commands|Aliases|Permissions|Description|
 - Create areas
 - Edit areas
 - Delete areas
+- Add commands to areas
+- Remove commands from areas
+- Add permissions to areas
+- Remove permissions from areas
+- Help page
+- List of all existing areas
 - Comes with a wand for selections
 - Custom Wand Item
 - Custom Wand Name

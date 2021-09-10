@@ -2,6 +2,7 @@
 
 namespace Its123Miguel321\BuildProtect\commands;
 
+use Its123Miguel321\BuildProtect\Area;
 use Its123Miguel321\BuildProtect\BuildProtect;
 
 use jojoe77777\FormAPI\CustomForm;
@@ -152,6 +153,12 @@ class BuildProtectCommands extends Command implements PluginIdentifiableCommand
 					array_push($names, $build["Name"]);
 				}
 				
+				if(count($names) == 0)
+				{
+					$sender->sendMessage("§l§c(!) §r§7No areas exist!");
+					return;	
+				}
+				
 				$form = new CustomForm(function(Player $sender, $data) use($names) {
 					
 					if($data === null)
@@ -200,14 +207,9 @@ class BuildProtectCommands extends Command implements PluginIdentifiableCommand
 				
 				if(count($names) == 0)
 				{
-					$sender->sendMessage("§l§c(!) §r§7No protected areas exist!");
+					$sender->sendMessage("§l§c(!) §r§7No areas exist!");
 					return;	
 				}
-				
-				$breaking = false;
-				$placing = false;
-				$pvp = false;
-				$flight = false;
 				
 				$form = new CustomForm(function(Player $sender, $data) use($names){
 					
@@ -221,6 +223,9 @@ class BuildProtectCommands extends Command implements PluginIdentifiableCommand
 						$sender->sendMessage("§l§c(!) §r§7Can not edit area, it no longer exists!");
 						return;
 					}
+					
+					$id = $this->getMain()->getProvider()->getAreaId($names[$data[1]]);
+					$area = $this->getMain()->getProvider()->getArea($id);
 					
 					if($data[8] == true)
 					{
@@ -237,16 +242,65 @@ class BuildProtectCommands extends Command implements PluginIdentifiableCommand
 							$sender->sendMessage("§l§c(!) §r§7Selections must be on the same level!");
 							return;
 						}
+						
+						$this->getMain()->getProvider()->saveArea(new Area($area->getId(), $area->getName(), $area->getCreator(), $selections["pos1"], $selections["pos2"], $area->getCommands(), $area->getPermissions(), $data[3], $data[4], $data[5], $data[6]));
+						$sender->sendMessage("§l§a(!) §r§7You successfully edited an area named §6" . $names[$data[1]] . "§7!");
 					}
 					
-					
+					$this->getMain()->getProvider()->saveArea(new Area($area->getId(), $area->getName(), $area->getCreator(), $area->getPos1(), $area->getPos2(), $area->getCommands(), $area->getPermissions(), $data[3], $data[4], $data[5], $data[6]));
+					$sender->sendMessage("§l§a(!) §r§7You successfully edited an area named §6" . $names[$data[1]] . "§7!");
 				});
+				$form->setTitle("");
+				$form->addLabel("§7Hello §e" . $sender->getName() . "§7, fill out the form below to edit an area!\n");
+				$form->addDropDown("§6Select an area:", $names);
+				$form->addLabel("\n§7Toggle any button below to the left to set as false/disabled. Toggle it to the right if would like them to be set true/enabled!\n");
+				$form->addToggle("§6BlockBreaking", true);
+				$form->addToggle("§6BlockPlacing", true);
+				$form->addToggle("§6PvP", true);
+				$form->addToggle("§6Flight", true);
+				$form->addLabel("\n§7Toggle the button below to the right if you would like to use your current selections as the new positions for this area!\n");
+				$form->addToggle("§6New Coordinates", false);
+				$sender->sendForm($form);
 			break;
 			break;
 				
 			case "addpermission":
 			case "ap":
-			
+				if(!($sender->hasPermission("buildprotect.addpermission") || $sender->hasPermission("buildprotect.admin")))
+				{
+					$sender->sendMessage("§l§c(!) §r§7You do not have permission to use this command!");
+					return;
+				}
+				
+				$builds = $this->getMain()->getProvider()->getAreas();
+				$names = [];
+				
+				foreach(array_values($builds) as $build)
+				{
+					array_push($names, $build["Name"]);
+				}
+				
+				if(count($names) == 0)
+				{
+					$sender->sendMessage("§l§c(!) §r§7No areas exist!");
+					return;	
+				}
+				
+				$form = new CustomForm(function(Player $sender, $data) use($names){
+					
+					if($data === null)
+					{
+						return;
+					}
+					
+					
+					
+				});
+				$form->setTitle("");
+				$form->addLabel("§7Hello §e" . $sender->getName() . "§7, fill out the form below to add a permission to this area.\n§l§cNote: §r§eYou can not add multiple permissions!");
+				$form->addDropdown("§6Select an area:", $names);
+				$form->addInput("§6Add permission", "buildprotect.test");
+				$sender->sendForm($form);
 			break;
 			break;
 				

@@ -230,6 +230,49 @@ class AreasAPI
 	
 	
 	/**
+	 * Returns the areas array
+	 *
+	 * @return array
+	 *
+	 */
+	public function getAreas() : array
+	{
+		return $this->getMain()->getProvider()->getAreas();
+	}
+	
+	
+	
+	/**
+	 * Returns an areas id by its name.
+	 *
+	 * @param string $name
+	 *
+	 * @return int
+	 * 
+	 */
+	public function getAreaId(string $name) : int
+	{
+		return $this->getMain()->getProvider()->getAreaId($name);
+	}
+	
+	
+	
+	/**
+	 * Returns an area by its id
+	 *
+	 * @param int $id
+	 *
+	 * @return Area
+	 *
+	 */
+	public function getArea(int $id) : Area
+	{
+		return $this->getMain()->getProvider()->getArea($id);
+	}
+	
+	
+	
+	/**
 	 * Return the Main file of this plugin
 	 *
 	 * @return BuildProtect

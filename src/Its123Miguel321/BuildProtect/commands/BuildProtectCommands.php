@@ -145,7 +145,7 @@ class BuildProtectCommands extends Command implements PluginIdentifiableCommand
 					return;
 				}
 				
-				$builds = $this->getMain()->getProvider()->getAreas();
+				$builds = $this->getMain()->getApi()->getAreas();
 				$names = [];
 					
 				foreach(array_values($builds) as $build)
@@ -197,7 +197,7 @@ class BuildProtectCommands extends Command implements PluginIdentifiableCommand
 					return;
 				}
 				
-				$builds = $this->getMain()->getProvider()->getAreas();
+				$builds = $this->getMain()->getApi()->getAreas();
 				$names = [];
 					
 				foreach(array_values($builds) as $build)
@@ -224,8 +224,8 @@ class BuildProtectCommands extends Command implements PluginIdentifiableCommand
 						return;
 					}
 					
-					$id = $this->getMain()->getProvider()->getAreaId($names[$data[1]]);
-					$area = $this->getMain()->getProvider()->getArea($id);
+					$id = $this->getMain()->getApi()->getAreaId($names[$data[1]]);
+					$area = $this->getMain()->getApi()->getArea($id);
 					
 					if($data[8] == true)
 					{
@@ -243,11 +243,11 @@ class BuildProtectCommands extends Command implements PluginIdentifiableCommand
 							return;
 						}
 						
-						$this->getMain()->getProvider()->saveArea(new Area($area->getId(), $area->getName(), $area->getCreator(), $selections["pos1"], $selections["pos2"], $area->getCommands(), $area->getPermissions(), $data[3], $data[4], $data[5], $data[6]));
+						$this->getMain()->getApi()->createArea(($area->getId(), $area->getName(), $area->getCreator(), $selections["pos1"], $selections["pos2"], $area->getCommands(), $area->getPermissions(), $data[3], $data[4], $data[5], $data[6]);
 						$sender->sendMessage("§l§a(!) §r§7You successfully edited an area named §6" . $names[$data[1]] . "§7!");
 					}
 					
-					$this->getMain()->getProvider()->saveArea(new Area($area->getId(), $area->getName(), $area->getCreator(), $area->getPos1(), $area->getPos2(), $area->getCommands(), $area->getPermissions(), $data[3], $data[4], $data[5], $data[6]));
+					$this->getMain()->getApi()->createArea($area->getId(), $area->getName(), $area->getCreator(), $area->getPos1(), $area->getPos2(), $area->getCommands(), $area->getPermissions(), $data[3], $data[4], $data[5], $data[6]);
 					$sender->sendMessage("§l§a(!) §r§7You successfully edited an area named §6" . $names[$data[1]] . "§7!");
 				});
 				$form->setTitle("");
@@ -272,7 +272,7 @@ class BuildProtectCommands extends Command implements PluginIdentifiableCommand
 					return;
 				}
 				
-				$builds = $this->getMain()->getProvider()->getAreas();
+				$builds = $this->getMain()->getApi()->getAreas();
 				$names = [];
 				
 				foreach(array_values($builds) as $build)
@@ -293,8 +293,13 @@ class BuildProtectCommands extends Command implements PluginIdentifiableCommand
 						return;
 					}
 					
+					if(trim($data[2]) === "")
+					{
+						$sender->sendMessage("§l§c(!) §r§7You must enter a permission!");
+						return;
+					}
 					
-					
+					$this->getMain()->getApi()->addAreaPermission($data[2]);
 				});
 				$form->setTitle("");
 				$form->addLabel("§7Hello §e" . $sender->getName() . "§7, fill out the form below to add a permission to this area.\n§l§cNote: §r§eYou can not add multiple permissions!");

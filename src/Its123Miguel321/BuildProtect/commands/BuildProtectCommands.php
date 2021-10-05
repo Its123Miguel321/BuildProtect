@@ -243,7 +243,7 @@ class BuildProtectCommands extends Command implements PluginIdentifiableCommand
 							return;
 						}
 						
-						$this->getMain()->getApi()->createArea(($area->getId(), $area->getName(), $area->getCreator(), $selections["pos1"], $selections["pos2"], $area->getCommands(), $area->getPermissions(), $data[3], $data[4], $data[5], $data[6]);
+						$this->getMain()->getApi()->createArea($area->getId(), $area->getName(), $area->getCreator(), $selections["pos1"], $selections["pos2"], $area->getCommands(), $area->getPermissions(), $data[3], $data[4], $data[5], $data[6]);
 						$sender->sendMessage("§l§a(!) §r§7You successfully edited an area named §6" . $names[$data[1]] . "§7!");
 					}
 					

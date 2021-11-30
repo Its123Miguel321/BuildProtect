@@ -6,8 +6,8 @@ BuildProtect is a plugin made to protect your builds or any area. It uses wands 
 ## Commands
 Commands|Permissions|Description|
 |-----------|-----------|-----------|
-|no command||buildprotect.commands|Gives access to all BuildProtect commands|
-|no command||buildprotect.bypass|Bypass the events cancelled in areas|
+|no command|buildprotect.commands|Gives access to all BuildProtect commands|
+|no command|buildprotect.bypass|Bypass the events cancelled in areas|
 |/buildprotect wand|buildprotect.wand|Access to wand command|
 |/buildprotect save|buildprotect.save|Access to save command|
 |/buildprotect edit|buildprotect.edit|Access to edit command|

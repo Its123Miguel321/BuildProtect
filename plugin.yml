@@ -1,34 +1,11 @@
 name: BuildProtect
+version: 2.0
 main: Its123Miguel321\BuildProtect\BuildProtect
-api: [3.0.0]
-version: 1.2
-author: Its123Miguel321
+api: 4.0.0
+author: 'Its123Miguel321'
 
 permissions:
- buildprotect.plugin:
-  default: op
-  children:
-   buildprotect.wand:
+  buildprotect.commands:
     default: op
-   buildprotect.save:
-    default: op
-   buildprotect.edit:
-    default: op
-   buildprotect.delete:
-    default: op
-   buildprotect.list:
-    default: op
-   buildprotect.help:
-    default: op
-   buildprotect.addcommand:
-    default: op
-   buildprotect.addpermission:
-    default: op
-   buildprotect.removecommand:
-    default: op
-   buildprotect.removepermission:
-    default: op
-   buildprotect.bypass:
-    default: op
-   buildprotect.admin:
+  buildprotect.bypass:
     default: op

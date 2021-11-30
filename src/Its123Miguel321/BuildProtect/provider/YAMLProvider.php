@@ -21,9 +21,7 @@ class YAMLProvider extends DataProvider
 	{
 		$this->main = $main;
 		
-		@mkdir($this->getMain()->getDataFolder() . 'BuildProtect');
-		
-		$this->config = new Config($this->getMain()->getDataFolder() . 'BuildProtect/builds.yml', Config::YAML, array('builds' => []));
+		$this->config = new Config($this->getMain()->getDataFolder() . 'builds.yml', Config::YAML, array('builds' => []));
 	}
 	/**
 	 * Checks if build exists

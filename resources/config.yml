@@ -16,16 +16,12 @@ ItemID: "288:0"
 # The default name for the wand is §l§6Protection §fFeather!
 WandName: "§l§6Protection §fFeather"
 
-# Set to true if you would like a message to send when an action is disabled(BlockBreaking, BlockPlacing, PvP, Flight), if not keep as false.
-AreaMessages: false
-
-# Set to true if you would like the creator of an area to be able to bypass the restrictions, if not keep it as false.
-CreatorBypass: false
-
 # Choose what you would like the data to be stored as.
 # YAML | JSON
 DataProvider: "YAML"
 
+# Set to true if you would like a message to send when an action is disabled(BlockBreaking, BlockPlacing, PvP, Flight), if not keep as false.
+Messages: false
 # Message for block breaking being disabled.
 BreakingDisabled: "§cYou can not break blocks here!"
 # Message for block placing being disabled.

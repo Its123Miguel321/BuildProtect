@@ -2,9 +2,9 @@
 
 namespace Its123Miguel321\BuildProtect;
 
-use pocketmine\data\bedrock\EnchantmentIdMap;
 use pocketmine\item\enchantment\Enchantment;
 use pocketmine\item\enchantment\ItemFlags;
+use pocketmine\item\enchantment\VanillaEnchantments;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 
@@ -38,7 +38,7 @@ class BuildProtect extends PluginBase
 		$this->manager = new BuildsManager($this);
 		$this->api = new BuildsAPI($this);
 		
-		EnchantmentIdMap::getInstance()->register(100, new Enchantment('BuildProtect', -1, ItemFlags::ALL, ItemFlags::NONE, 1));
+		VanillaEnchantments::register('BuildProtect', new Enchantment('BuildProtect', -1, ItemFlags::ALL, ItemFlags::NONE, 1));
 		
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 		$this->getServer()->getCommandMap()->register('BuildProtect', new Commands($this));

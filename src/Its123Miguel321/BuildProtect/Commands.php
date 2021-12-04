@@ -15,7 +15,7 @@ use Its123Miguel321\BuildProtect\subcommands\Save;
 use Its123Miguel321\BuildProtect\subcommands\SubCommand;
 use Its123Miguel321\BuildProtect\subcommands\Wand;
 
-class Commands extends Command
+class Commands extends Command implements PluginOwned
 {
 	/** @var BuildProtect $main */
 	public $main;

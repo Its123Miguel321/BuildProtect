@@ -40,11 +40,11 @@ class Commands extends Command implements PluginOwned
 		$this->setAliases(['bp']);
 		$this->setPermission('buildprotect.commands');
 		
-		self::loadSubCommand(new Delete($this->getMain(), 'delete', 'Deletes a protected build'));
-		self::loadSubCommand(new Edit($this->getMain(), 'edit', 'Edits a protected build'));
-		self::loadSubCommand(new Help($this->getMain(), 'help', 'Shows help page'));
-		self::loadSubCommand(new Save($this->getMain(), 'save', 'Saves a new protected build'));
-		self::loadSubCommand(new Wand($this->getMain(), 'wand', 'Gets BuildProtect wand'));
+		self::loadSubCommand(new Delete($this->getOwningPlugin(), 'delete', 'Deletes a protected build'));
+		self::loadSubCommand(new Edit($this->getOwningPlugin(), 'edit', 'Edits a protected build'));
+		self::loadSubCommand(new Help($this->getOwningPlugin(), 'help', 'Shows help page'));
+		self::loadSubCommand(new Save($this->getOwningPlugin(), 'save', 'Saves a new protected build'));
+		self::loadSubCommand(new Wand($this->getOwningPlugin(), 'wand', 'Gets BuildProtect wand'));
 	}
 	
 	

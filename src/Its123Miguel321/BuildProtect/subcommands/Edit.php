@@ -128,7 +128,7 @@ class Edit extends SubCommand
 			
 			if(!(is_numeric($priority)))
 			{
-				$this->editUI($player, '§cPriority must be numeric!');
+				$this->editUI($player, '§cPriority must be numeric!', $build->getName());
 				return;
 			}
 			

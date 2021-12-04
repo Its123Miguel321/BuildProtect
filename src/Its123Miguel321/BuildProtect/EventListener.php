@@ -188,7 +188,7 @@ class EventListener implements Listener
 		
 		if($event->isCancelled()) return;
 		if(!($victim instanceof Player) || !($attacker instanceof Player)) return;
-		if($player->getGamemode() === GameMode::CREATIVE() || $attacker->hasPermission('buildprotect.bypass')) return;
+		if($attacker->getGamemode() === GameMode::CREATIVE() || $attacker->hasPermission('buildprotect.bypass')) return;
 		if(!($this->getPlugin()->getApi()->isInside($victim->getPosition())) || !($this->getPlugin()->getApi()->isInside($attacker->getPosition()))) return;
 		
 		$areas1 = $this->getPlugin()->getApi()->getAreasIn($victim->getPosition());

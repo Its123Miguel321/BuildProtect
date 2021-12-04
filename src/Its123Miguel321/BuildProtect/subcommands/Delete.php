@@ -110,7 +110,7 @@ class Delete extends SubCommand
 				case 0:
 					if($this->getMain()->getManager()->countBuilds() === 0)
 					{
-						$sender->sendMessage('§l§c(!) §r§7Can not open UI, there are no protected builds to delete!');
+						$player->sendMessage('§l§c(!) §r§7Can not open UI, there are no protected builds to delete!');
 						return;
 					}
 					
@@ -120,7 +120,7 @@ class Delete extends SubCommand
 					break;
 				
 				case 1:
-					$this->deleteUI($sender, '§7Hello §e' . $sender->getName() . '§7, fill out the form below to delete an area!');
+					$this->deleteUI($player, '§7Hello §e' . $player->getName() . '§7, fill out the form below to delete an area!');
 					break;
 			}
 		});

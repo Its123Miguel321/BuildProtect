@@ -4,6 +4,8 @@ namespace Its123Miguel321\BuildProtect;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\plugin\Plugin;
+use pocketmine\plugin\PluginOwned;
 
 use Its123Miguel321\BuildProtect\BuildProtect;
 use Its123Miguel321\BuildProtect\subcommands\Delete;
@@ -151,7 +153,7 @@ class Commands extends Command
 	 * @return BuildProtect
 	 * 
 	 */
-	public function getMain() : BuildProtect
+	public function getOwningPlugin() : Plugin
 	{
 		return $this->main;
 	}

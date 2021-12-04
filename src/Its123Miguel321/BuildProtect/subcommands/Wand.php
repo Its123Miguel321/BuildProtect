@@ -3,8 +3,9 @@
 namespace Its123Miguel321\BuildProtect\subcommands;
 
 use pocketmine\command\CommandSender;
+use pocketmine\item\enchantment\Enchantment;
 use pocketmine\item\enchantment\EnchantmentInstance;
-use pocketmine\item\enchantment\StringToEnchantmentParser;
+use pocketmine\item\enchantment\ItemFlags;
 use pocketmine\item\ItemFactory;
 use pocketmine\player\Player;
 
@@ -46,7 +47,10 @@ class Wand extends SubCommand
 		$item = ItemFactory::getInstance()->get($id, $meta);
 		$item->setCustomName($this->getMain()->getConfig()->get('WandName'));
 		$item->setLore(['§fBreak §6to select first position', '§fTap/Click §6to select second position']);
-		$item->addEnchantment(new EnchantmentInstance(StringToEnchantmentParser::getInstance()->parse('BuildProtect')));
+		
+		$enchantment = new Enchantment('BuildProtect', -1, ItemFlags::ALL, ItemFlags::NONE, 1);
+		
+		$item->addEnchantment($enchantment);
 		
 		if(!($sender->getInventory()->canAddItem($item)))
 		{

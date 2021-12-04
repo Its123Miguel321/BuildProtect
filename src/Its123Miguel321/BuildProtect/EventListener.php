@@ -54,7 +54,7 @@ class EventListener implements Listener
 		$x = $block->getPosition()->getX();
 		$y = $block->getPosition()->getY();
 		$z = $block->getPosition()->getZ();
-		$world = $block->getPosition()->getWorld()->getDisplayName();
+		$world = $block->getPosition()->getWorld()->getFolderName();
 		
 		$this->getPlugin()->getApi()->setSelection($player, 'pos1', array($x, $y, $z, $world));
 		
@@ -88,7 +88,7 @@ class EventListener implements Listener
 		$x = $block->getPosition()->getX();
 		$y = $block->getPosition()->getY();
 		$z = $block->getPosition()->getZ();
-		$world = $block->getPosition()->getWorld()->getDisplayName();
+		$world = $block->getPosition()->getWorld()->getFolderName();
 		
 		$this->getPlugin()->getApi()->setSelection($player, 'pos2', array($x, $y, $z, $world));
 		

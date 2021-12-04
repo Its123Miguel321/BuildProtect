@@ -8,6 +8,7 @@ use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerMoveEvent;
+use pocketmine\player\Gamemode;
 use pocketmine\player\Player;
 
 use Its123Miguel321\BuildProtect\BuildProtect;
@@ -109,7 +110,7 @@ class EventListener implements Listener
 		$block = $event->getBlock();
 		
 		if($event->isCancelled()) return;
-		if($player->getGamemode() == 1 || $player->hasPermission('buildprotect.bypass')) return;
+		if($player->getGamemode() === Gamemode::CREATIVE() || $player->hasPermission('buildprotect.bypass')) return;
 		if(!($this->getPlugin()->getApi()->isInside($block->getPosition()))) return;
 		
 		$areas = $this->getPlugin()->getApi()->getAreasIn($block->getPosition());
@@ -148,7 +149,7 @@ class EventListener implements Listener
 		$block = $event->getBlock();
 		
 		if($event->isCancelled()) return;
-		if($player->getGamemode() == 1 || $player->hasPermission('buildprotect.bypass')) return;
+		if($player->getGamemode() === Gamemode::CREATIVE() || $player->hasPermission('buildprotect.bypass')) return;
 		if(!($this->getPlugin()->getApi()->isInside($block->getPosition()))) return;
 		
 		$areas = $this->getPlugin()->getApi()->getAreasIn($block->getPosition());
@@ -187,7 +188,7 @@ class EventListener implements Listener
 		
 		if($event->isCancelled()) return;
 		if(!($victim instanceof Player) || !($attacker instanceof Player)) return;
-		if($attacker->getGamemode() == 1 || $attacker->hasPermission('buildprotect.bypass')) return;
+		if($player->getGamemode() === Gamemode::CREATIVE() || $attacker->hasPermission('buildprotect.bypass')) return;
 		if(!($this->getPlugin()->getApi()->isInside($victim->getPosition())) || !($this->getPlugin()->getApi()->isInside($attacker->getPosition()))) return;
 		
 		$areas1 = $this->getPlugin()->getApi()->getAreasIn($victim->getPosition());
@@ -238,7 +239,7 @@ class EventListener implements Listener
 		$player = $event->getPlayer();
 		
 		if($event->isCancelled()) return;
-		if($player->getGamemode() == 1 || $player->hasPermission('buildprotect.bypass')) return;
+		if($player->getGamemode() === Gamemode::CREATIVE() || $player->hasPermission('buildprotect.bypass')) return;
 		if(!($this->getPlugin()->getApi()->isInside($player->getPosition()))) return;
 		
 		$areas = $this->getPlugin()->getApi()->getAreasIn($player->getPosition());

@@ -13,6 +13,8 @@ class BuildsAPI
 	public $main;
 	/** @var array $selections */
 	public $selections = [];
+	/** @var array $mode */
+	public $mode = [];
 	
 	
 	
@@ -25,6 +27,44 @@ class BuildsAPI
 	public function __construct(BuildProtect $main)
 	{
 		$this->main = $main;
+	}
+	
+	
+	
+	/**
+	 * Checks if the player is in the protection mode
+	 * 
+	 * @param Player|string $player
+	 *
+	 * @return bool
+	 *
+	 */
+	public function inMode(Player|string $player) : bool
+	{
+		if($player instanceof Player) $player = $player->getName();
+		
+		return in_array($player, $this->mode);
+	}
+	
+	
+	
+	/**
+	 * Set in the protection mode
+	 *
+	 * @param Player|string $player
+	 * @param bool $value
+	 *
+	 */
+	public function setInMode(Player|string $player, bool $value = true) : void
+	{
+		if($player instanceof Player) $player = $player->getName();
+		
+		if($value)
+		{
+			$this->mode[] = $player;
+		}else{
+			unset($this->mode[array_search($player, $this->mode)]);
+		}
 	}
 	
 	

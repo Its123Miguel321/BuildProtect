@@ -1,6 +1,6 @@
 <?php
 
-namespace Its123Miguel321\BuildProtect\DataManager;
+namespace Its123Miguel321\BuildProtect\manager;
 
 use pocketmine\player\Player;
 use pocketmine\world\Position;

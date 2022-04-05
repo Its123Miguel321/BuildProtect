@@ -25,7 +25,7 @@ class BuildProtect extends PluginBase
 	
 	
 	/**
-	 * Registers the Commands, EventListener, and Enchantment
+	 * Registers the Commands, EventListener, API, Manager, and Provider once plugin is enabled!
 	 * 
 	 */
 	public function onEnable() : void

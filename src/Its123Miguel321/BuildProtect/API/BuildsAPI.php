@@ -142,20 +142,45 @@ class BuildsAPI
 			$pos1 = $build->getPos1();
 			$pos2 = $build->getPos2();
 			
-			$x = array_flip(range($pos1[0], $pos2[0]));
-			$y = array_flip(range($pos1[1], $pos2[1]));
-			$z = array_flip(range($pos1[2], $pos2[2]));
+			if(!($pos->getWorld()->getFolderName() === $pos1[3])) continue;
 			
-			if($pos1[3] === $pos2[3])
+			$minX = $pos1[0];
+			$maxX = $pos2[0];
+			
+			if($minX > $maxX)
 			{
-				if(isset($x[$pos->getX()]))
+				$mminX = $maxX;
+				$maxX = $minX;
+				$minX = $mminX;
+			}
+			
+			$minY = $pos1[1];
+			$maxY = $pos2[1];
+			
+			if($minY > $maxY)
+			{
+				$mminY = $maxY;
+				$maxY = $minY;
+				$minY = $mminY;
+			}
+			
+			$minZ = $pos1[2];
+			$maxZ = $pos2[2];
+			
+			if($minZ > $maxZ)
+			{
+				$mminZ = $maxZ;
+				$maxZ = $minZ;
+				$minZ = $mminZ;
+			}
+
+			if($pos->getX() >= $minX && $maxX >= $pos->getX())
+			{
+				if($pos->getY() >= $minY && $maxY >= $pos->getY())
 				{
-					if(isset($y[$pos->getY()]))
+					if($pos->getZ() >= $minZ && $maxZ >= $pos->getZ())
 					{
-						if(isset($z[$pos->getZ()]))
-						{
-							return true;
-						}
+						return true;
 					}
 				}
 			}
@@ -183,21 +208,46 @@ class BuildsAPI
 		{
 			$pos1 = $build->getPos1();
 			$pos2 = $build->getPos2();
+
+			if($pos->getWorld()->getFolderName() != $pos1[3]) continue;
+
+			$minX = $pos1[0];
+			$maxX = $pos2[0];
 			
-			$x = array_flip(range($pos1[0], $pos2[0]));
-			$y = array_flip(range($pos1[1], $pos2[1]));
-			$z = array_flip(range($pos1[2], $pos2[2]));
-			
-			if($pos1[3] === $pos2[3])
+			if($minX > $maxX)
 			{
-				if(isset($x[$pos->getX()]))
+				$mminX = $maxX;
+				$maxX = $minX;
+				$minX = $mminX;
+			}
+			
+			$minY = $pos1[1];
+			$maxY = $pos2[1];
+			
+			if($minY > $maxY)
+			{
+				$mminY = $maxY;
+				$maxY = $minY;
+				$minY = $mminY;
+			}
+			
+			$minZ = $pos1[2];
+			$maxZ = $pos2[2];
+			
+			if($minZ > $maxZ)
+			{
+				$mminZ = $maxZ;
+				$maxZ = $minZ;
+				$minZ = $mminZ;
+			}
+
+			if($pos->getX() >= $minX && $maxX >= $pos->getX())
+			{
+				if($pos->getY() >= $minY && $maxY >= $pos->getY())
 				{
-					if(isset($y[$pos->getY()]))
+					if($pos->getZ() >= $minZ && $maxZ >= $pos->getZ())
 					{
-						if(isset($z[$pos->getZ()]))
-						{
-							$areas[] = $build;
-						}
+						$areas[] = $build;
 					}
 				}
 			}

@@ -7,8 +7,8 @@ use pocketmine\utils\Config;
 
 use Its123Miguel321\BuildProtect\API\BuildsAPI;
 use Its123Miguel321\BuildProtect\Commands;
-use Its123Miguel321\BuildProtect\DataManager\BuildsManager;
 use Its123Miguel321\BuildProtect\EventListener;
+use Its123Miguel321\BuildProtect\manager\BuildsManager;
 use Its123Miguel321\BuildProtect\provider\DataProvider;
 use Its123Miguel321\BuildProtect\provider\JSONProvider;
 use Its123Miguel321\BuildProtect\provider\YAMLProvider;
